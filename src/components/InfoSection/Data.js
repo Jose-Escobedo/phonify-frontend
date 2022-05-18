@@ -35,24 +35,6 @@ export const homeObjTwo = {
 };
 
 export const homeObjThree = {
-  id: "services",
-  lightBg: false,
-  lightText: true,
-  lightTextDesc: true,
-  topLine: "Our Services",
-  headline: "Phonify customers enjoy zero fees.",
-  description:
-    "Get access to exclusive deals when you register and order through our website.",
-  buttonLabel: "Get started",
-  imgStart: false,
-  img: require("../../images/svg-4.svg").default,
-  alt: "c",
-  dark: true,
-  primary: true,
-  darkText: false,
-};
-
-export const homeObjFour = {
   id: "phones",
   lightBg: true,
   lightText: false,
@@ -70,7 +52,7 @@ export const homeObjFour = {
   darkText: true,
 };
 
-export const homeObjFive = {
+export const homeObjFour = {
   id: "signup",
   lightBg: false,
   lightText: true,
