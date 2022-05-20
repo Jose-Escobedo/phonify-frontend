@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../ButtonElements";
-// import svgOne from "../../images/svg-1.svg";
+
 import {
   InfoContainer,
   InfoWrapper,
@@ -45,10 +45,10 @@ const InfoSection = ({
                 <BtnWrap>
                   <Button
                     to="home"
-                    scroll={true}
+                    scroll={"true"}
                     duration={500}
                     spy={true}
-                    exact={true}
+                    exact={"true"}
                     offset={-80}
                     primary={primary ? 1 : 0}
                     dark={dark ? 1 : 0}

@@ -1,13 +1,25 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import { BrowserRouter } from "react-router-dom";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+import App from "./App";
+
+// 👇️ IMPORTANT: use correct ID of your root element
+// this is the ID of the div in your index.html file
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+// 👇️ if you use TypeScript, add non-null (!) assertion operator
+// const root = createRoot(rootElement!);
+
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <BrowserRouter>
-      <App />
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/Login" element={<Login />} />
+      </Routes>
     </BrowserRouter>
-  </React.StrictMode>
+  </StrictMode>
 );

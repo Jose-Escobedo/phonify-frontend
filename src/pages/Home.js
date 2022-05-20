@@ -10,6 +10,7 @@ import {
 } from "../components/InfoSection/Data";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +28,7 @@ const Home = () => {
       <Services />
       <InfoSection {...homeObjThree} />
       <InfoSection {...homeObjFour} />
+      <Footer />
     </>
   );
 };
