@@ -40,6 +40,11 @@ export const NavLogo = styled(LinkR)`
   text-decoration: none;
 `;
 
+export const NavImg = styled.img`
+  width: 200px;
+  height: 70px;
+`;
+
 export const MobileIcon = styled.div`
   display: none;
 

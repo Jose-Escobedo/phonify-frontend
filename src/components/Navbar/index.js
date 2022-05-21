@@ -11,8 +11,9 @@ import {
   NavLinks,
   NavBtn,
   NavBtnLink,
+  NavImg,
 } from "./NavbarElements";
-
+const logo = require("../../images/logo.svg").default;
 const Navbar = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
 
@@ -36,8 +37,9 @@ const Navbar = ({ toggle }) => {
       <Nav scrollNav={scrollNav}>
         <NavbarContainer>
           <NavLogo to="/" onClick={toggleHome}>
-            Phonify
+            <NavImg src={logo} />
           </NavLogo>
+
           <MobileIcon onClick={toggle}>
             <FaBars />
           </MobileIcon>
