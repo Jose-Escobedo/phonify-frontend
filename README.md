@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Project Phonify first draft
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Web application that lets a user view phones, add them to cart and checkout
 
-In the project directory, you can run:
+## Deliverables
 
-### `npm start`
+User can view all phones
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+User can view reviews
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+User can view items counter on cart
 
-### `npm test`
+User can add phones to cart
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+User can delete teams from their cart
 
-### `npm run build`
+User can update order from their cart
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+User can navigate to pages using react router
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Stretch
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+More Feautures on frontend
 
-### `npm run eject`
+Frontend built using redux
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+More models and more complex backend
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Admin section to the website
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Fully functional admin wesbite to update stock and see payments
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Mockup
 
-## Learn More
+![mockup-1](https://user-images.githubusercontent.com/70832391/168681294-29fa5601-a632-48f9-af24-352f7a2eebbe.png)
+![mockup-2](https://user-images.githubusercontent.com/70832391/168681370-35191df3-4529-432d-8366-26dbf9dd93f7.png)
+![mockup-3](https://user-images.githubusercontent.com/70832391/168681382-f226c717-0243-4e19-b5f3-f1d1ae05af30.png)
+![mockup-4](https://user-images.githubusercontent.com/70832391/168681388-4f4049b1-dd75-43b3-bc5b-88a567d9cbc5.png)
+![mockup-5](https://user-images.githubusercontent.com/70832391/168681407-5c7595a9-6cd7-47d2-a441-f9b2e6fd1550.png)
+![mockup-6](https://user-images.githubusercontent.com/70832391/168681417-65a4599f-87dd-44c3-a9d3-4ab2dd679bf2.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Backend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![backend-wireframe](https://user-images.githubusercontent.com/70832391/168678705-78a60148-f0f7-4b63-8544-bd33933bfaf7.png)
 
-### Code Splitting
+## User Model
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+User has many reviews
 
-### Analyzing the Bundle Size
+User has many phones, through reviews
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Phone Model
 
-### Making a Progressive Web App
+Phone has many reviews
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Phone has many users through reviews
 
-### Advanced Configuration
+## Review Model
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+belongs_to :user
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+belongs_to :phone
