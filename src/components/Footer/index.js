@@ -21,6 +21,7 @@ import {
   SocialIcons,
   WebsiteRights,
   SocialLogo,
+  FooterImg,
 } from "./FooterElements";
 
 const Footer = () => {

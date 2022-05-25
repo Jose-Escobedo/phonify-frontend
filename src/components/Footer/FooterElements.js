@@ -95,6 +95,11 @@ export const SocialLogo = styled(Link)`
   font-weight: bold;
 `;
 
+export const FooterImg = styled.img`
+  width: 200px;
+  height: 70px;
+`;
+
 export const WebsiteRights = styled.small`
   color: #fff;
 `;

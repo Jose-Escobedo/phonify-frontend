@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeroSection from "../components/HeroSection";
 import InfoSection from "../components/InfoSection";
 import Services from "../components/Services";
+import Phones from "../components/Phones/Phones";
 import {
   homeObjOne,
   homeObjThree,
@@ -18,6 +19,14 @@ const Home = () => {
     setIsOpen(!isOpen);
   };
 
+  const [phones, setPhones] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/phones")
+      .then((res) => res.json())
+      .then(setPhones);
+  }, []);
+
   return (
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
@@ -26,7 +35,7 @@ const Home = () => {
       <InfoSection {...homeObjOne} />
       <InfoSection {...homeObjTwo} />
       <Services />
-      <InfoSection {...homeObjThree} />
+      <Phones phones={phones} />
       <InfoSection {...homeObjFour} />
       <Footer />
     </>
