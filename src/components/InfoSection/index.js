@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../ButtonElements";
+import { RouterBtn, RouterBtnLink } from "../RouterButtonLinkElements";
 
 import {
   InfoContainer,
@@ -42,21 +42,9 @@ const InfoSection = ({
                 <TopLine darkText={darkText}>{topLine}</TopLine>
                 <Heading lightText={lightText}>{headline}</Heading>
                 <Subtitle darkText={darkText}>{description}</Subtitle>
-                <BtnWrap>
-                  <Button
-                    to="home"
-                    scroll={"true"}
-                    duration={500}
-                    spy={true}
-                    exact={"true"}
-                    offset={-80}
-                    primary={primary ? 1 : 0}
-                    dark={dark ? 1 : 0}
-                    dark2={dark2 ? 1 : 0}
-                  >
-                    {buttonLabel}
-                  </Button>
-                </BtnWrap>
+                <RouterBtn>
+                  <RouterBtnLink to="/signup">Sign up</RouterBtnLink>
+                </RouterBtn>
               </TextWrapper>
             </Column1>
             <Column2>

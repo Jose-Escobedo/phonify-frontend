@@ -3,12 +3,9 @@ import HeroSection from "../components/HeroSection";
 import InfoSection from "../components/InfoSection";
 import Services from "../components/Services";
 import Phones from "../components/Phones/Phones";
-import {
-  homeObjOne,
-  homeObjThree,
-  homeObjTwo,
-  homeObjFour,
-} from "../components/InfoSection/Data";
+import TestimonialsSection from "../components/TestimonialsSection/TestimonialsSection";
+import { TestimonialsSectionData } from "../components/TestimonialsSection/TestimonialsSectionData";
+import { aboutObj, signupObj } from "../components/InfoSection/Data";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
@@ -32,11 +29,11 @@ const Home = () => {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
       <HeroSection />
-      <InfoSection {...homeObjOne} />
-      <InfoSection {...homeObjTwo} />
+      <InfoSection {...aboutObj} />
+      <TestimonialsSection {...TestimonialsSectionData} />
       <Services />
       <Phones phones={phones} />
-      <InfoSection {...homeObjFour} />
+      <InfoSection {...signupObj} />
       <Footer />
     </>
   );
