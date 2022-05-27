@@ -88,6 +88,16 @@ export const NavLinks = styled(LinkS)`
   &:active {
     border-bottom: 3px solid #00ffff;
   }
+
+  @media screen and (max-width: 925px) {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  @media screen and (max-width: 840px) {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
 `;
 
 export const NavBtn = styled.nav`
@@ -96,6 +106,10 @@ export const NavBtn = styled.nav`
 
   @media screen and (max-width: 768px) {
     display: none;
+  }
+  @media screen and (max-width: 925px) {
+    font-size: 0.85rem;
+    padding: 0 0.5rem;
   }
 `;
 
@@ -116,5 +130,13 @@ export const NavBtnLink = styled(LinkR)`
     transition: all 0.2s ease-in-out;
     background: #fff;
     color: #010606;
+  }
+  @media screen and (max-width: 925px) {
+    font-size: 1rem;
+    padding: 8px 18px;
+  }
+  @media screen and (max-width: 800px) {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
   }
 `;

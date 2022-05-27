@@ -5,13 +5,25 @@ export const InfoContainer = styled.div`
   background: ${({ lightBg }) => (lightBg ? "#f9f9f9" : "#010606")};
 
   @media screen and (max-width: 768px) {
-    padding: 100px 0;
+    padding-top: 75px;
+    height: 800px;
   }
+
+  @media screen and (max-width: 1000px) {
+    height: 900px;
+  }
+
+  @media screen and (max-width: 480px) {
+    height: 800px;
+    padding-top: 50px;
+  }
+  overflow: hidden;
 `;
 
 export const InfoWrapper = styled.div`
   display: grid;
   z-index: 1;
+  overflow: hidden;
   height: 860px;
   width: 100%;
   max-width: 1100px;
@@ -19,6 +31,10 @@ export const InfoWrapper = styled.div`
   margin-left: auto;
   padding: 0 24px;
   justify-content: center;
+  @media screen and (max-width: 480px) {
+    height: 700px;
+    padding-top: 50px;
+  }
 `;
 
 export const InfoRow = styled.div`

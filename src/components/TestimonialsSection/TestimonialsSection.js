@@ -23,50 +23,47 @@ const TestimonialsSection = () => {
       <TestimonialsSectionWrapper>
         <TestimonialsSectionCard>
           <TestimonialsSectionIcon
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample40.jpg"
-            alt="profile-sample2"
+            src="https://i.ibb.co/K7LKtHG/founder.jpg"
+            alt="Business-Owner"
           />
           <TestimonialsSectionCaption>
             <TestimonialsSectionBlockQuote>
               <TestimonialsSectionP>
-                Which is worse, that everyone has his price, or that the price
-                is always so low.
+                "Phonify is a reliable website with reviews to back it up."
               </TestimonialsSectionP>
             </TestimonialsSectionBlockQuote>
-            <TestimonialsSectionH3>Sue Shei</TestimonialsSectionH3>
-            <TestimonialsSectionH5>Founder</TestimonialsSectionH5>
+            <TestimonialsSectionH3>Sara Garcia</TestimonialsSectionH3>
+            <TestimonialsSectionH5>eCommerce Manager</TestimonialsSectionH5>
           </TestimonialsSectionCaption>
         </TestimonialsSectionCard>
         <TestimonialsSectionCard>
           <TestimonialsSectionIcon
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample40.jpg"
-            alt="profile-sample2"
+            src="https://i.ibb.co/t87c04h/chef.jpg"
+            alt="Chef"
           />
           <TestimonialsSectionCaption>
             <TestimonialsSectionBlockQuote>
               <TestimonialsSectionP>
-                The only skills I have the patience to learn are those that have
-                no real application in life.
+                "Phonify is a reliable website with reviews to back it up."
               </TestimonialsSectionP>
             </TestimonialsSectionBlockQuote>
-            <TestimonialsSectionH3>Indigo Violet</TestimonialsSectionH3>
-            <TestimonialsSectionH5>Public Relations</TestimonialsSectionH5>
+            <TestimonialsSectionH3>Mario Garcia</TestimonialsSectionH3>
+            <TestimonialsSectionH5>Professional Chef</TestimonialsSectionH5>
           </TestimonialsSectionCaption>
         </TestimonialsSectionCard>
         <TestimonialsSectionCard>
           <TestimonialsSectionIcon
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample40.jpg"
-            alt="profile-sample2"
+            src="https://i.ibb.co/gtr3Sjg/student.jpg"
+            alt="Student"
           />
           <TestimonialsSectionCaption>
             <TestimonialsSectionBlockQuote>
               <TestimonialsSectionP>
-                I'm killing time while I wait for life to shower me with meaning
-                and happiness.
+                "Who doesn't like great deals and quality products?"
               </TestimonialsSectionP>
             </TestimonialsSectionBlockQuote>
             <TestimonialsSectionH3>Will Barrow</TestimonialsSectionH3>
-            <TestimonialsSectionH5>Web Designer</TestimonialsSectionH5>
+            <TestimonialsSectionH5>Entrepreneur</TestimonialsSectionH5>
           </TestimonialsSectionCaption>
         </TestimonialsSectionCard>
       </TestimonialsSectionWrapper>
@@ -75,59 +72,3 @@ const TestimonialsSection = () => {
 };
 
 export default TestimonialsSection;
-
-{
-  /* <div id="testimonials" className="testimonialscontainer">
-<Caption>Our Testimonials</h2>
-<div className="figurecontainer">
-  <figure className="figure">
-    <img
-      src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample40.jpg"
-      alt="profile-sample2"
-    />
-    <figcaption>
-      <blockquote>
-        <p>
-          Which is worse, that everyone has his price, or that the price
-          is always so low.
-        </p>
-      </blockquote>
-      <h3>Sue Shei</h3>
-      <h5>Founder</h5>
-    </figcaption>
-  </figure>
-  <figure className="figure">
-    <img
-      src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample37.jpg"
-      alt="profile-sample7"
-    />
-    <figcaption>
-      <blockquote>
-        <p>
-          I'm killing time while I wait for life to shower me with meaning
-          and happiness.
-        </p>
-      </blockquote>
-      <h3>Will Barrow</h3>
-      <h5>Web Designer</h5>
-    </figcaption>
-  </figure>
-  <figure className="figure">
-    <img
-      src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample35.jpg"
-      alt="profile-sample6"
-    />
-    <figcaption>
-      <blockquote>
-        <p>
-          The only skills I have the patience to learn are those that have
-          no real application in life.{" "}
-        </p>
-      </blockquote>
-      <h3>Indigo Violet</h3>
-      <h5>Public Relations</h5>
-    </figcaption>
-  </figure>
-</div>
-</div> */
-}
