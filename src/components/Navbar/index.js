@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaShoppingCart } from "react-icons/fa";
 import { animateScroll as scroll } from "react-scroll/modules";
 import {
   Nav,
@@ -12,9 +12,10 @@ import {
   NavBtn,
   NavBtnLink,
   NavImg,
+  CartBtnLink,
 } from "./NavbarElements";
 const logo = require("../../images/logo.svg").default;
-const Navbar = ({ toggle }) => {
+const Navbar = ({ toggle, toggleCart, cartCount }) => {
   const [scrollNav, setScrollNav] = useState(false);
 
   const changeNav = () => {
@@ -107,6 +108,13 @@ const Navbar = ({ toggle }) => {
           </NavMenu>
           <NavBtn>
             <NavBtnLink to="/Login">Login</NavBtnLink>
+            <CartBtnLink to="/Cart">
+              <FaShoppingCart onClick={toggleCart} className="shopping-cart" />
+              <span className="badge badge-warning" id="lblCartCount">
+                {" "}
+                {cartCount}{" "}
+              </span>
+            </CartBtnLink>
           </NavBtn>
         </NavbarContainer>
       </Nav>

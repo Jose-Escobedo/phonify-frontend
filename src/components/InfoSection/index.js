@@ -43,7 +43,7 @@ const InfoSection = ({
                 <Heading lightText={lightText}>{headline}</Heading>
                 <Subtitle darkText={darkText}>{description}</Subtitle>
                 <RouterBtn>
-                  <RouterBtnLink to="/signup">Sign up</RouterBtnLink>
+                  <RouterBtnLink to="/Signup">Sign up</RouterBtnLink>
                 </RouterBtn>
               </TextWrapper>
             </Column1>

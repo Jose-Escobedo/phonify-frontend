@@ -36,7 +36,7 @@ const HeroSection = () => {
           <Button
             primary="true"
             dark="true"
-            to="/signup"
+            to="/Signup"
             onMouseEnter={onHover}
             onMouseLeave={onHover}
             smooth={true}

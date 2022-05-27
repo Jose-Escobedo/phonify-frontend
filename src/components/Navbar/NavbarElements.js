@@ -140,3 +140,8 @@ export const NavBtnLink = styled(LinkR)`
     padding: 0.5rem 1rem;
   }
 `;
+
+export const CartBtnLink = styled(LinkR)`
+  padding: 0;
+  text-decoration: none;
+`;

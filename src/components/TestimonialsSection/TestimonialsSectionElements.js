@@ -5,7 +5,7 @@ export const TestimonialsSectionContainer = styled.div`
   @import url(https://fonts.googleapis.com/css?family=Oswald);
   @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
   display: flex;
-  height: 700px;
+  height: 1100px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

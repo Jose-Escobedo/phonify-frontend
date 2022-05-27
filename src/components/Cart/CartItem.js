@@ -1,9 +1,9 @@
 import React from "react";
-import { PhonesH2, PhonesCard, PhonesIcon, PhonesP } from "./PhoneElements";
+import { PhonesH2, PhonesCard, PhonesIcon, PhonesP } from "./CartElements";
 
-const PhoneCard = ({ phone, handlePhoneClick }) => {
+const CartItem = ({ phone }) => {
   return (
-    <PhonesCard onClick={() => handlePhoneClick(phone.id, phone.name)}>
+    <PhonesCard>
       <PhonesIcon src={phone.image} alt={phone.name} />
       <PhonesH2>{`${phone.name} ($${phone.price})`}</PhonesH2>
       <PhonesP>{phone.desc}</PhonesP>
@@ -12,4 +12,4 @@ const PhoneCard = ({ phone, handlePhoneClick }) => {
   );
 };
 
-export default PhoneCard;
+export default CartItem;
