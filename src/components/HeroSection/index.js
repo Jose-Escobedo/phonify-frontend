@@ -39,9 +39,9 @@ const HeroSection = () => {
             to="/Signup"
             onMouseEnter={onHover}
             onMouseLeave={onHover}
-            smooth={true}
+            smooth={"true"}
             duration={500}
-            spy={true}
+            spy={"true"}
             exact="true"
             offset={-80}
           >

@@ -15,7 +15,7 @@ import {
   CartBtnLink,
 } from "./NavbarElements";
 const logo = require("../../images/logo.svg").default;
-const Navbar = ({ toggle, toggleCart, cartCount }) => {
+const Navbar = ({ toggle, cart }) => {
   const [scrollNav, setScrollNav] = useState(false);
 
   const changeNav = () => {
@@ -109,10 +109,10 @@ const Navbar = ({ toggle, toggleCart, cartCount }) => {
           <NavBtn>
             <NavBtnLink to="/Login">Login</NavBtnLink>
             <CartBtnLink to="/Cart">
-              <FaShoppingCart onClick={toggleCart} className="shopping-cart" />
+              <FaShoppingCart className="shopping-cart" />
               <span className="badge badge-warning" id="lblCartCount">
                 {" "}
-                {cartCount}{" "}
+                {cart.length}{" "}
               </span>
             </CartBtnLink>
           </NavBtn>
