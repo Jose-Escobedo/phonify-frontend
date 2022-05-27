@@ -1,8 +1,8 @@
 export const aboutObj = {
   id: "about",
-  lightBg: false,
-  lightText: true,
-  lightTextDesc: true,
+  lightBg: true,
+  lightText: false,
+  lightTextDesc: false,
   topLine: "Premium Phones",
   headline: "Phonify customers enjoy zero fees.",
   description:
@@ -13,14 +13,14 @@ export const aboutObj = {
   alt: "phone-laptop",
   dark: true,
   primary: true,
-  darkText: false,
+  darkText: true,
 };
 
 export const signupObj = {
   id: "signup",
-  lightBg: false,
-  lightText: true,
-  lightTextDesc: true,
+  lightBg: true,
+  lightText: false,
+  lightTextDesc: false,
   topLine: "Sign Up",
   headline: "Register now and check out our deals.",
   description:
@@ -31,5 +31,5 @@ export const signupObj = {
   alt: "c",
   dark: true,
   primary: true,
-  darkText: false,
+  darkText: true,
 };

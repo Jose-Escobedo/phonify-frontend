@@ -8,10 +8,10 @@ export const RouterBtn = styled.nav`
 
 export const RouterBtnLink = styled(LinkR)`
   border-radius: 50px;
-  background: #00ffff;
+  background: #010606;
   white-space: nowrap;
   padding: 10px 22px;
-  color: #010606;
+  color: white;
   font-size: 16px;
   outline: none;
   border: none;
@@ -21,7 +21,7 @@ export const RouterBtnLink = styled(LinkR)`
 
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: #fff;
+    background: #00ffff;
     color: #010606;
   }
 `;

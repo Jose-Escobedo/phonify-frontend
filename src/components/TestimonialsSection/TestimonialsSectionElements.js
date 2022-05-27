@@ -108,6 +108,7 @@ export const TestimonialsSectionIcon = styled.img`
   vertical-align: top;
   opacity: 0.6;
   height: 350px;
+  object-fit: cover;
 `;
 
 export const TestimonialsSectionH1 = styled.h1`

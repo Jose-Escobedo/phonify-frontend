@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 export const PhonesContainer = styled.div`
   display: flex;
-  height: 1100px;
+  height: 1200px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   background: black;
+  padding: 75px 0;
 
   @media screen and (max-width: 768px) {
     height: 2500px;
@@ -82,6 +83,17 @@ export const PhonesCard = styled.div`
     transform: scale(1.02);
     transition: all 0.2s ease-in-out;
     cursor: pointer;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 254, 227, 0.67);
+    -moz-box-shadow: 0px 0px 30px 0px rgba(0, 254, 227, 0.67);
+    box-shadow: 0px 0px 30px 0px rgba(0, 254, 227, 0.67);
+
+    * {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
   }
 `;
 

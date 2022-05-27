@@ -29,7 +29,7 @@ const TestimonialsSection = () => {
           <TestimonialsSectionCaption>
             <TestimonialsSectionBlockQuote>
               <TestimonialsSectionP>
-                "Phonify is a reliable website with reviews to back it up."
+                "I could not believe the deals, they are legit!"
               </TestimonialsSectionP>
             </TestimonialsSectionBlockQuote>
             <TestimonialsSectionH3>Sara Garcia</TestimonialsSectionH3>
