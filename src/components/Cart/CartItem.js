@@ -1,13 +1,29 @@
 import React from "react";
-import { PhonesH2, PhonesCard, PhonesIcon, PhonesP } from "./CartElements";
+import {
+  CartH2,
+  PhonesCard,
+  PhonesIcon,
+  CartUpdateButton,
+  CartUpdateButtonWrapper,
+  CartQuantity,
+} from "./CartElements";
 
-const CartItem = ({ cartItem, handlePhoneClick }) => {
+const CartItem = ({ cartItem, handlePhoneAdd, handlePhoneRemove }) => {
   return (
-    <PhonesCard onClick={handlePhoneClick}>
+    <PhonesCard>
       <PhonesIcon src={cartItem.image} alt={cartItem.name} />
-      <PhonesH2>{`${cartItem.name} ($${cartItem.price})`}</PhonesH2>
-      <PhonesP>{cartItem.desc}</PhonesP>
-      <PhonesH2>10 Reviews</PhonesH2>
+      <CartH2>{`${cartItem.name}`}</CartH2>
+      <CartUpdateButtonWrapper>
+        <CartUpdateButton onClick={() => handlePhoneAdd(cartItem)}>
+          +
+        </CartUpdateButton>
+        <CartUpdateButton onClick={() => handlePhoneRemove(cartItem)}>
+          -
+        </CartUpdateButton>
+      </CartUpdateButtonWrapper>
+      <CartQuantity>
+        {cartItem.qty} x ${cartItem.price.toFixed(2)}
+      </CartQuantity>
     </PhonesCard>
   );
 };

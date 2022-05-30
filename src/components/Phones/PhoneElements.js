@@ -7,7 +7,7 @@ export const PhonesContainer = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background: black;
+  background: #010606;
   padding: 75px 0;
 
   @media screen and (max-width: 768px) {
@@ -20,7 +20,7 @@ export const PhonesContainer = styled.div`
   }
 
   @media screen and (max-width: 480px) {
-    height: 2200px;
+    height: 2300px;
   }
 `;
 
@@ -75,7 +75,7 @@ export const PhonesCard = styled.div`
     margin: auto;
   }
   @media screen and (max-width: 480px) {
-    height: 250px;
+    height: 300px;
     width: 85%;
     margin: auto;
   }
@@ -143,7 +143,7 @@ export const PhonesH2 = styled.h2`
 `;
 
 export const PhonesP = styled.p`
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-align: center;
   margin-bottom: 10px;
 
@@ -152,5 +152,25 @@ export const PhonesP = styled.p`
   }
   @media screen and (max-width: 480px) {
     font-size: 0.8rem;
+  }
+`;
+
+export const PhonesCartButton = styled.button`
+  border-radius: 50px;
+  background: #00cccc;
+  white-space: nowrap;
+  padding: 7px 18px;
+  color: black;
+  font-size: 13px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #00ffff;
+    color: #010606;
   }
 `;

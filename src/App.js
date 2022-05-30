@@ -8,20 +8,14 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 function App({}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [cartIsOpen, setCartIsOpen] = useState(false);
   const [phones, setPhones] = useState([]);
   const [cart, setCart] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
-  const toggleCart = () => {
-    setCartIsOpen(!cartIsOpen);
-  };
-
-  function handlePhoneClick(phone) {
+  function handlePhoneAdd(phone) {
     const exist = cart.find((item) => item.id === phone.id);
     console.log(phone);
     if (exist) {
@@ -32,6 +26,20 @@ function App({}) {
       );
     } else {
       setCart([...cart, { ...phone, qty: 1 }]);
+    }
+    console.log(cart);
+  }
+
+  function handlePhoneRemove(phone) {
+    const exist = cart.find((item) => item.id === phone.id);
+    if (exist.qty === 1) {
+      setCart(cart.filter((item) => item.id !== phone.id));
+    } else {
+      setCart(
+        cart.map((item) =>
+          item.id === phone.id ? { ...exist, qty: exist.qty - 1 } : item
+        )
+      );
     }
     console.log(cart);
   }
@@ -49,14 +57,11 @@ function App({}) {
           element={
             <Home
               toggle={toggle}
-              cartCount={cartCount}
-              setCartIsOpen={setCartIsOpen}
-              toggleCart={toggleCart}
               setCart={setCart}
               phones={phones}
               isOpen={isOpen}
               cart={cart}
-              handlePhoneClick={handlePhoneClick}
+              handlePhoneAdd={handlePhoneAdd}
             />
           }
         />
@@ -65,7 +70,11 @@ function App({}) {
         <Route
           path="/Cart"
           element={
-            <Cart cartIsOpen={cartIsOpen} toggleCart={toggleCart} cart={cart} />
+            <Cart
+              cart={cart}
+              handlePhoneAdd={handlePhoneAdd}
+              handlePhoneRemove={handlePhoneRemove}
+            />
           }
         />
       </Routes>

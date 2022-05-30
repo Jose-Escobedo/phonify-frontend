@@ -1,13 +1,22 @@
 import React from "react";
-import { PhonesH2, PhonesCard, PhonesIcon, PhonesP } from "./PhoneElements";
+import {
+  PhonesH2,
+  PhonesCard,
+  PhonesIcon,
+  PhonesP,
+  PhonesCartButton,
+} from "./PhoneElements";
 
-const PhoneCard = ({ phone, handlePhoneClick }) => {
+const PhoneCard = ({ phone, handlePhoneAdd }) => {
   return (
-    <PhonesCard onClick={() => handlePhoneClick(phone)}>
+    <PhonesCard>
       <PhonesIcon src={phone.image} alt={phone.name} />
       <PhonesH2>{`${phone.name} ($${phone.price})`}</PhonesH2>
-      <PhonesP>{phone.desc}</PhonesP>
       <PhonesH2>10 Reviews</PhonesH2>
+      <PhonesP>{phone.desc}</PhonesP>
+      <PhonesCartButton onClick={() => handlePhoneAdd(phone)}>
+        Add To Cart
+      </PhonesCartButton>
     </PhonesCard>
   );
 };

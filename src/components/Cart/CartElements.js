@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 export const CartContainer = styled.div`
   display: flex;
-  height: 1200px;
+  height: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background: black;
-  padding: 75px 0;
+  background: white;
 
   @media screen and (max-width: 768px) {
     height: 2500px;
@@ -25,19 +24,19 @@ export const CartContainer = styled.div`
 `;
 
 export const CartPhonesWrapper = styled.div`
-  margin: 0 auto;
+  margin: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   grid-gap: 2rem;
   z-index: 1;
   overflow: hidden;
-  height: 2000px;
+  height: auto;
   width: 100%;
   max-width: 1100px;
   margin-right: auto;
   margin-left: auto;
-  padding: 0 24px;
+  padding: 24px 24px;
   justify-content: center;
 
   @media screen and (max-width: 1000px) {
@@ -54,7 +53,7 @@ export const CartPhonesWrapper = styled.div`
 `;
 
 export const PhonesCard = styled.div`
-  background: #fff;
+  background: #010106;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -119,19 +118,20 @@ export const PhonesIcon = styled.img`
   }
 `;
 
-export const PhonesH1 = styled.h1`
+export const CartH1 = styled.h1`
   font-size: 2.5rem;
-  color: #fff;
-  margin-bottom: 64px;
+  color: #010106;
+  margin: 64px 10px;
 
   @media screen and (max-width: 650px) {
     font-size: 2rem;
   }
 `;
 
-export const PhonesH2 = styled.h2`
+export const CartH2 = styled.h2`
   font-size: 1rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: white;
 
   @media screen and (max-width: 650px) {
     font-size: 0.9rem;
@@ -142,15 +142,64 @@ export const PhonesH2 = styled.h2`
   }
 `;
 
-export const PhonesP = styled.p`
-  font-size: 1rem;
-  text-align: center;
-  margin-bottom: 10px;
+export const CartEmpty = styled.div`
+  color: #010106;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
 
   @media screen and (max-width: 650px) {
     font-size: 0.9rem;
   }
+
   @media screen and (max-width: 480px) {
     font-size: 0.8rem;
   }
 `;
+
+export const CartUpdateButton = styled.button`
+  border-radius: 30px;
+  background: #00ffff;
+  white-space: nowrap;
+  padding: 3px 8px;
+  color: #010606;
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: bolder;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #00cccc;
+    color: white;
+  }
+`;
+
+export const CartQuantity = styled.h3`
+  color: white;
+`;
+
+export const CartUpdateButtonWrapper = styled.div`
+  display: flex;
+`;
+
+export const CartSummary = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  color: black;
+`;
+
+export const CartSummaryRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CartSummaryColumn1 = styled.div``;
+export const CartSummaryColumn2 = styled.div``;

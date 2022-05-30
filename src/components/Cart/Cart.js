@@ -1,33 +1,59 @@
 import React from "react";
 import CartItem from "./CartItem.js";
-import { PhonesH1, CartContainer, CartPhonesWrapper } from "./CartElements";
+import {
+  CartH1,
+  CartContainer,
+  CartPhonesWrapper,
+  CartEmpty,
+  CartH2,
+  CartSummary,
+  CartSummaryRow,
+  CartSummaryColumn1,
+  CartSummaryColumn2,
+} from "./CartElements";
 
-const Cart = ({ cart, handlePhoneClick, cartIsOpen }) => {
-  let lengthZero = true;
-  if (cart.length === 0) {
-    lengthZero = true;
-  } else {
-    lengthZero = false;
-  }
-
+const Cart = ({ cart, handlePhoneAdd, handlePhoneRemove }) => {
+  const itemsPrice = cart.reduce((a, c) => a + c.price * c.qty, 0);
+  const taxPrice = itemsPrice * 0.095;
+  const shippingPrice = itemsPrice > 1200 ? 0 : 25;
+  const totalPrice = itemsPrice + taxPrice + shippingPrice;
+  console.log(itemsPrice, taxPrice, shippingPrice, totalPrice);
   return (
     <CartContainer id="phone-card">
-      <PhonesH1>Your Cart Items</PhonesH1>
+      <CartH1>Your Cart Items</CartH1>
+      <CartEmpty>{cart.length === 0 && <div>Cart Is Empty</div>}</CartEmpty>
       <CartPhonesWrapper>
-        {lengthZero ? (
-          <div>Your Cart is Empty</div>
-        ) : (
-          cart.map((cartItem, index) => {
-            return (
-              <CartItem
-                handlePhoneClick={handlePhoneClick}
-                cartItem={cartItem}
-                key={index}
-              />
-            );
-          })
-        )}
+        {cart.map((cartItem, index) => {
+          return (
+            <CartItem
+              handlePhoneAdd={handlePhoneAdd}
+              handlePhoneRemove={handlePhoneRemove}
+              cartItem={cartItem}
+              key={cartItem.id}
+            />
+          );
+        })}
       </CartPhonesWrapper>
+      {cart.length !== 0 && (
+        <CartSummary>
+          <CartSummaryRow>
+            <CartSummaryColumn1>Subtotal Price</CartSummaryColumn1>
+            <CartSummaryColumn2>${itemsPrice.toFixed(2)}</CartSummaryColumn2>
+          </CartSummaryRow>
+          <CartSummaryRow>
+            <CartSummaryColumn1>Tax Price</CartSummaryColumn1>
+            <CartSummaryColumn2>${taxPrice.toFixed(2)}</CartSummaryColumn2>
+          </CartSummaryRow>
+          <CartSummaryRow>
+            <CartSummaryColumn1>Shipping Price</CartSummaryColumn1>
+            <CartSummaryColumn2>${shippingPrice.toFixed(2)}</CartSummaryColumn2>
+          </CartSummaryRow>
+          <CartSummaryRow>
+            <CartSummaryColumn1>Total Price</CartSummaryColumn1>
+            <CartSummaryColumn2>${totalPrice.toFixed(2)}</CartSummaryColumn2>
+          </CartSummaryRow>
+        </CartSummary>
+      )}
     </CartContainer>
   );
 };
