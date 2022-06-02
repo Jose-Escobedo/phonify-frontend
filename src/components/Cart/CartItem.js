@@ -22,7 +22,7 @@ const CartItem = ({ cartItem, handlePhoneAdd, handlePhoneRemove }) => {
         </CartUpdateButton>
       </CartUpdateButtonWrapper>
       <CartQuantity>
-        {cartItem.qty} x ${cartItem.price.toFixed(2)}
+        {cartItem.quantity} x ${cartItem.price.toFixed(2)}
       </CartQuantity>
     </PhonesCard>
   );

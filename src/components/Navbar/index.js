@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaBars, FaShoppingCart } from "react-icons/fa";
 import { animateScroll as scroll } from "react-scroll/modules";
+import { ButtonTag } from "../ButtonElements";
 import {
   Nav,
   NavbarContainer,
@@ -15,7 +16,16 @@ import {
   CartBtnLink,
 } from "./NavbarElements";
 const logo = require("../../images/logo.svg").default;
-const Navbar = ({ toggle, cart }) => {
+const Navbar = ({ toggle, cart, user, setUser, setIsAuthenticated }) => {
+  const logout = () => {
+    fetch("http://localhost:3000/logout", {
+      method: "DELETE",
+    }).then(() => {
+      setIsAuthenticated(false);
+      setUser(null);
+    });
+  };
+
   const [scrollNav, setScrollNav] = useState(false);
 
   const changeNav = () => {
@@ -107,7 +117,11 @@ const Navbar = ({ toggle, cart }) => {
             </NavItem>
           </NavMenu>
           <NavBtn>
-            <NavBtnLink to="/Login">Login</NavBtnLink>
+            {user ? (
+              <ButtonTag onClick={logout}>Logout</ButtonTag>
+            ) : (
+              <NavBtnLink to="/Login">Login</NavBtnLink>
+            )}
             <CartBtnLink to="/Cart">
               <FaShoppingCart className="shopping-cart" />
               <span className="badge badge-warning" id="lblCartCount">

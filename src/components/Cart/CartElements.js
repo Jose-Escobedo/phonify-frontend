@@ -1,13 +1,15 @@
 import styled from "styled-components";
-
-export const CartContainer = styled.div`
+import { Link as LinkR } from "react-router-dom";
+export const CartandNav = styled.div`
   display: flex;
   height: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   overflow: hidden;
-  background: white;
+  padding: 0;
+  background: black;
 
   @media screen and (max-width: 768px) {
     height: 2500px;
@@ -21,6 +23,16 @@ export const CartContainer = styled.div`
   @media screen and (max-width: 480px) {
     height: 2200px;
   }
+`;
+export const CartContainer = styled.div`
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  background: white;
 `;
 
 export const CartPhonesWrapper = styled.div`
@@ -59,7 +71,7 @@ export const PhonesCard = styled.div`
   justify-content: flex-start;
   align-items: center;
   border-radius: 10px;
-  height: 400px;
+  height: 370px;
   padding: 30px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2s);
   transition: all 0.2s ease-in-out;
@@ -189,11 +201,19 @@ export const CartUpdateButtonWrapper = styled.div`
   display: flex;
 `;
 
+export const CartLogo = styled.img`
+  width: 200px;
+  height: 80px;
+  padding: 10px 0;
+`;
+
 export const CartSummary = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 45%;
   color: black;
+  height: 160px;
+  justify-content: center;
 `;
 
 export const CartSummaryRow = styled.div`
@@ -201,5 +221,36 @@ export const CartSummaryRow = styled.div`
   justify-content: space-between;
 `;
 
-export const CartSummaryColumn1 = styled.div``;
-export const CartSummaryColumn2 = styled.div``;
+export const CheckoutButton = styled.nav`
+  display: flex;
+  align-items: center;
+  height: 130px;
+  margin: auto;
+`;
+
+export const CheckoutBtnLink = styled(LinkR)`
+  border-radius: 50px;
+  background: #010606;
+  white-space: nowrap;
+  padding: 10px 100px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #00ffff;
+    color: #010606;
+  }
+`;
+
+export const CartSummaryColumn1 = styled.div`
+  font-size: 1.5rem;
+`;
+export const CartSummaryColumn2 = styled.div`
+  font-size: 1.5rem;
+`;

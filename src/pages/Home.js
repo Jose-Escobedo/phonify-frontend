@@ -9,11 +9,27 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 
-const Home = ({ isOpen, toggle, cart, phones, handlePhoneAdd, setCart }) => {
+const Home = ({
+  isOpen,
+  toggle,
+  cart,
+  phones,
+  handlePhoneAdd,
+  setCart,
+  setIsAuthenticated,
+  setUser,
+  user,
+}) => {
   return (
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
-      <Navbar toggle={toggle} cart={cart} />
+      <Navbar
+        toggle={toggle}
+        cart={cart}
+        user={user}
+        setUser={setUser}
+        setIsAuthenticated={setIsAuthenticated}
+      />
 
       <HeroSection />
       <InfoSection {...aboutObj} />

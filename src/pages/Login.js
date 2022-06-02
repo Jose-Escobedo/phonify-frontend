@@ -2,11 +2,15 @@ import React from "react";
 import Login from "../components/Login";
 import ScrollToTop from "../components/ScrollToTop";
 
-const LoginPage = () => {
+const LoginPage = ({ setIsAuthenticated, setUser, user }) => {
   return (
     <>
       <ScrollToTop />
-      <Login />
+      <Login
+        setUser={setUser}
+        setIsAuthenticated={setIsAuthenticated}
+        user={user}
+      />
     </>
   );
 };
