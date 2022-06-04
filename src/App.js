@@ -10,6 +10,7 @@ function App({}) {
   const [isOpen, setIsOpen] = useState(false);
   const [phones, setPhones] = useState([]);
   const [cart, setCart] = useState([]);
+  const [cartInfo, setCartInfo] = useState([]);
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
@@ -18,19 +19,52 @@ function App({}) {
     setIsOpen(!isOpen);
   };
 
+  // if (exist) {
+  //   setCart(
+  //     cart.map((item) =>
+  //       item.id === phone.id
+  //         ? { ...exist, quantity: exist.quantity + 1 }
+  //         : item
+  //     )
+  //   );
+  // } else {
+  //   setCart([...cart, { ...phone, quantity: 1 }]);
+  // }
+
   function handlePhoneAdd(phone) {
     const exist = cart.find((item) => item.id === phone.id);
     console.log(phone);
     if (exist) {
-      setCart(
-        cart.map((item) =>
-          item.id === phone.id
-            ? { ...exist, quantity: exist.quantity + 1 }
-            : item
-        )
-      );
+      fetch(`http://localhost:3000/cart_items/add`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({ phone_id: phone.id }),
+      })
+        .then((res) => res.json())
+        .then(
+          setCart(
+            cart.map((item) =>
+              item.id === phone.id
+                ? { ...exist, quantity: exist.quantity + 1 }
+                : item
+            )
+          )
+        );
     } else {
-      setCart([...cart, { ...phone, quantity: 1 }]);
+      fetch(`http://localhost:3000/cart_items`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ phone_id: phone.id }),
+      })
+        .then((res) => res.json())
+        .then(setCart([...cart, { ...phone, quantity: 1 }]));
     }
   }
 
@@ -46,20 +80,20 @@ function App({}) {
             : item
         )
       );
+      // setCartPhones(
+      //   cart.map((item) =>
+      //     item.id === phone.id
+      //       ? { ...exist, quantity: exist.quantity - 1 }
+      //       : item
+      //   )
+      // );
     }
-    console.log(cart);
   }
 
-  function cartContent(cart) {
-    console.log(cart);
-    setCart(cart);
-  }
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:3000/Cart`)
-  //     .then((res) => res.json())
-  //     .then(cartContent);
-  // }, []);
+  const cartContent = (data) => {
+    console.log(data);
+    setCartInfo(data);
+  };
 
   useEffect(() => {
     fetch("http://localhost:3000/authorized_user").then((res) => {
@@ -70,9 +104,17 @@ function App({}) {
         });
       }
     });
+
     fetch("http://localhost:3000/phones")
       .then((res) => res.json())
       .then(setPhones);
+
+    fetch("http://localhost:3000/current_cart", {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then(cartContent);
   }, []);
 
   return (
@@ -88,6 +130,8 @@ function App({}) {
               phones={phones}
               isOpen={isOpen}
               cart={cart}
+              cartInfo={cartInfo}
+              setCartInfo={setCartInfo}
               handlePhoneAdd={handlePhoneAdd}
               setUser={setUser}
               setIsAuthenticated={setIsAuthenticated}
@@ -125,6 +169,7 @@ function App({}) {
               cart={cart}
               handlePhoneAdd={handlePhoneAdd}
               handlePhoneRemove={handlePhoneRemove}
+              cartInfo={cartInfo}
             />
           }
         />

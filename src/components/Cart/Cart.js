@@ -17,7 +17,13 @@ import {
   CheckoutBtnLink,
 } from "./CartElements";
 
-const Cart = ({ cart, handlePhoneAdd, handlePhoneRemove, toggleHome }) => {
+const Cart = ({
+  cart,
+  cartInfo,
+  handlePhoneAdd,
+  handlePhoneRemove,
+  toggleHome,
+}) => {
   const logo = require("../../images/logo.svg").default;
   console.log("inside cart component");
   console.log(cart);

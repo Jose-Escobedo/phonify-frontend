@@ -18,6 +18,7 @@ const Home = ({
   setCart,
   setIsAuthenticated,
   setUser,
+  cartInfo,
   user,
 }) => {
   return (
@@ -26,6 +27,7 @@ const Home = ({
       <Navbar
         toggle={toggle}
         cart={cart}
+        cartInfo={cartInfo}
         user={user}
         setUser={setUser}
         setIsAuthenticated={setIsAuthenticated}
