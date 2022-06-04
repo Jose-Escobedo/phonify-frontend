@@ -8,13 +8,18 @@ import {
   CartQuantity,
 } from "./CartElements";
 
-const CartItem = ({ cartItem, handlePhoneAdd, handlePhoneRemove }) => {
+const CartItem = ({
+  cartItem,
+  cartQuantity,
+  handleQuantityAdd,
+  handlePhoneRemove,
+}) => {
   return (
     <PhonesCard>
       <PhonesIcon src={cartItem.image} alt={cartItem.name} />
       <CartH2>{`${cartItem.name}`}</CartH2>
       <CartUpdateButtonWrapper>
-        <CartUpdateButton onClick={() => handlePhoneAdd(cartItem)}>
+        <CartUpdateButton onClick={() => handleQuantityAdd(cartItem)}>
           +
         </CartUpdateButton>
         <CartUpdateButton onClick={() => handlePhoneRemove(cartItem)}>
@@ -22,7 +27,7 @@ const CartItem = ({ cartItem, handlePhoneAdd, handlePhoneRemove }) => {
         </CartUpdateButton>
       </CartUpdateButtonWrapper>
       <CartQuantity>
-        {cartItem.quantity} x ${cartItem.price.toFixed(2)}
+        {cartQuantity.quantity} x ${cartItem.price.toFixed(2)}
       </CartQuantity>
     </PhonesCard>
   );

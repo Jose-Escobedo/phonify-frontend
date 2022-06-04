@@ -12,22 +12,22 @@ import Footer from "../components/Footer";
 const Home = ({
   isOpen,
   toggle,
-  cart,
   phones,
-  handlePhoneAdd,
-  setCart,
+  handleQuantityAdd,
   setIsAuthenticated,
   setUser,
-  cartInfo,
   user,
+  cartPhones,
+  cartQuantity,
+  setCartPhones,
+  setCartQuantity,
 }) => {
   return (
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar
         toggle={toggle}
-        cart={cart}
-        cartInfo={cartInfo}
+        cartPhones={cartPhones}
         user={user}
         setUser={setUser}
         setIsAuthenticated={setIsAuthenticated}
@@ -39,9 +39,11 @@ const Home = ({
       <Services />
       <Phones
         phones={phones}
-        cart={cart}
-        handlePhoneAdd={handlePhoneAdd}
-        setCart={setCart}
+        handleQuantityAdd={handleQuantityAdd}
+        cartPhones={cartPhones}
+        cartQuantity={cartQuantity}
+        setCartPhones={setCartPhones}
+        setCartQuantity={setCartQuantity}
       />
       <InfoSection {...signupObj} />
       <Footer />

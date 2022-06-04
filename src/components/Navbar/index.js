@@ -16,14 +16,7 @@ import {
   CartBtnLink,
 } from "./NavbarElements";
 const logo = require("../../images/logo.svg").default;
-const Navbar = ({
-  toggle,
-  cart,
-  cartInfo,
-  user,
-  setUser,
-  setIsAuthenticated,
-}) => {
+const Navbar = ({ toggle, cartPhones, user, setUser, setIsAuthenticated }) => {
   const logout = () => {
     fetch("http://localhost:3000/logout", {
       method: "DELETE",
@@ -132,7 +125,7 @@ const Navbar = ({
             <CartBtnLink to="/Cart">
               <FaShoppingCart className="shopping-cart" />
               <span className="badge badge-warning" id="lblCartCount">
-                {cartInfo.length}
+                {cartPhones.length}
               </span>
             </CartBtnLink>
           </NavBtn>

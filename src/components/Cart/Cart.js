@@ -18,20 +18,21 @@ import {
 } from "./CartElements";
 
 const Cart = ({
-  cart,
-  cartInfo,
-  handlePhoneAdd,
-  handlePhoneRemove,
+  handleQuantityAdd,
+  cartPhones,
+  setCartPhones,
+  cartQuantity,
   toggleHome,
 }) => {
   const logo = require("../../images/logo.svg").default;
   console.log("inside cart component");
-  console.log(cart);
-  const itemsPrice = cart.reduce((a, c) => a + c.price * c.quantity, 0);
+  console.log(cartPhones);
+  const itemsPrice = cartPhones.reduce((a, c) => a + c.price * c.quantity, 0);
   const taxPrice = itemsPrice * 0.095;
   const shippingPrice = itemsPrice > 1200 ? 0 : 25;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
   console.log(itemsPrice, taxPrice, shippingPrice, totalPrice);
+
   return (
     <CartandNav>
       <NavLogo to="/">
@@ -39,20 +40,23 @@ const Cart = ({
       </NavLogo>
       <CartContainer id="phone-card">
         <CartH1>Your Cart Items</CartH1>
-        <CartEmpty>{cart.length === 0 && <div>Cart Is Empty</div>}</CartEmpty>
+        <CartEmpty>
+          {cartPhones.length === 0 && <div>Cart Is Empty</div>}
+        </CartEmpty>
         <CartPhonesWrapper>
-          {cart.map((cartItem, index) => {
+          {cartPhones.map((cartItem, index) => {
             return (
               <CartItem
-                handlePhoneAdd={handlePhoneAdd}
-                handlePhoneRemove={handlePhoneRemove}
+                handleQuantityAdd={handleQuantityAdd}
                 cartItem={cartItem}
-                key={cartItem.id}
+                cartQuantity={cartQuantity}
+                setCartPhones={setCartPhones}
+                key={cartPhones.phone_id}
               />
             );
           })}
         </CartPhonesWrapper>
-        {cart.length !== 0 && (
+        {cartPhones.length !== 0 && (
           <>
             <CartSummary>
               <CartSummaryRow>

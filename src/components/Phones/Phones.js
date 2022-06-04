@@ -2,7 +2,7 @@ import React from "react";
 import PhoneCard from "./PhoneCard";
 import { PhonesH1, PhonesContainer, PhonesWrapper } from "./PhoneElements";
 
-const Phones = ({ phones, handlePhoneAdd }) => {
+const Phones = ({ phones, handleQuantityAdd }) => {
   return (
     <PhonesContainer id="phone-card">
       <PhonesH1>Our Flagship Phones</PhonesH1>
@@ -12,7 +12,7 @@ const Phones = ({ phones, handlePhoneAdd }) => {
             <PhoneCard
               phone={phone}
               key={index}
-              handlePhoneAdd={handlePhoneAdd}
+              handleQuantityAdd={handleQuantityAdd}
             />
           );
         })}
