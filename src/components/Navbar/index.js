@@ -26,6 +26,8 @@ const Navbar = ({ toggle, cartPhones, user, setUser, setIsAuthenticated }) => {
     });
   };
 
+  // console.log("this is in navbar");
+  // console.log(cartPhones[Object.keys(cartPhones)[0]]);
   const [scrollNav, setScrollNav] = useState(false);
 
   const changeNav = () => {

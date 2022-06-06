@@ -12,8 +12,11 @@ const CartItem = ({
   cartItem,
   cartQuantity,
   handleQuantityAdd,
-  handlePhoneRemove,
+  handleQuantityReduce,
 }) => {
+  let newArray = [cartItem];
+  let newArr = [cartQuantity];
+  console.log(newArray);
   return (
     <PhonesCard>
       <PhonesIcon src={cartItem.image} alt={cartItem.name} />
@@ -22,12 +25,12 @@ const CartItem = ({
         <CartUpdateButton onClick={() => handleQuantityAdd(cartItem)}>
           +
         </CartUpdateButton>
-        <CartUpdateButton onClick={() => handlePhoneRemove(cartItem)}>
+        <CartUpdateButton onClick={() => handleQuantityReduce(cartItem)}>
           -
         </CartUpdateButton>
       </CartUpdateButtonWrapper>
       <CartQuantity>
-        {cartQuantity.quantity} x ${cartItem.price.toFixed(2)}
+        {cartItem.quantity} x ${cartItem.price.toFixed(2)}
       </CartQuantity>
     </PhonesCard>
   );

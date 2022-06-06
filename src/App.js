@@ -3,7 +3,7 @@ import Login from "./pages/Login";
 import Signup from "./components/Signup/Signup";
 import { Routes, Route } from "react-router-dom";
 import Cart from "./components/Cart/Cart";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useParams } from "react";
 
 import "./App.css";
 import { CartQuantity } from "./components/Cart/CartElements";
@@ -11,29 +11,25 @@ function App({}) {
   const [isOpen, setIsOpen] = useState(false);
   const [phones, setPhones] = useState([]);
   const [cartQuantity, setCartQuantity] = useState([]);
-  const [cartPhones, setCartPhones] = useState([]);
-
+  // const { Cart } = useParams();
+  const [cartInfo, setCartInfo] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const [cartPhones, setCartPhones] = useState(["1", "2"]);
+
+  const phoneInfo = cartPhones[Object.keys(cartPhones)[0]];
+
+  console.log(cartPhones);
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
-  // if (exist) {
-  //   setCart(
-  //     cart.map((item) =>
-  //       item.id === phone.id
-  //         ? { ...exist, quantity: exist.quantity + 1 }
-  //         : item
-  //     )
-  //   );
-  // } else {
-  //   setCart([...cart, { ...phone, quantity: 1 }]);
-  // }
-
-  function handleQuantityAdd(phone) {
-    const cartQuantityExist = cartQuantity.find(
+  const handleQuantityAdd = (phone) => {
+    const cartQuantityExist = cartPhones[Object.keys(cartPhones)[1]].find(
+      (item) => item.phone_id === phone.id
+    );
+    const cartPhonesExist = cartPhones[Object.keys(cartPhones)[0]].find(
       (item) => item.phone_id === phone.id
     );
 
@@ -49,13 +45,15 @@ function App({}) {
       })
         .then((res) => res.json())
         .then(
-          cartQuantity.map((item) =>
-            item.phone_id === phone.id
-              ? {
-                  ...cartQuantityExist,
-                  quantity: cartQuantityExist.quantity + 1,
-                }
-              : item
+          setCartPhones(
+            cartQuantity.map((item) =>
+              item.phone_id === phone.id
+                ? {
+                    ...cartQuantityExist,
+                    quantity: cartQuantityExist.quantity + 1,
+                  }
+                : item
+            )
           )
         );
     } else {
@@ -70,62 +68,72 @@ function App({}) {
       })
         .then((res) => res.json())
         .then(
-          setCartPhones(
-            cartPhones.map((item) =>
-              item.phone_id === phone.id ? [...cartPhones, item] : item
-            )
-          )
+          setCartPhones({
+            cart_phones: [
+              cartPhones[Object.keys(cartPhones)[0]].map((item) =>
+                item.phone_id === phone.id ? { ...cartPhonesExist, item } : item
+              ),
+            ],
+
+            cart_quantity: [cartPhones[Object.keys(cartPhones)[1]]],
+          })
         );
+
+      // .then(
+      //   setCartPhones(
+      //     cartPhones.map((item) =>
+      //       item.phone_id === phone.id ? [...cartPhones, item] : item
+      //     )
+      //   )
+      // );
     }
-  }
+  };
 
-  // function handlePhoneAdd(phone) {
-  //   const cartPhonesExist = cartPhones.find(
-  //     (item) => item.phone_id === phone.id
-  //   );
-
-  //   if (cartPhonesExist) {
-  //     console.log("Already added");
-  //   } else {
-
-  //   }
-  // }
-
-  // function handlePhoneRemove(phone) {
-  //   const exist = cart.find((item) => item.id === phone.id);
+  // function handleQuantityReduce(phone) {
+  //   const exist = cartQuantity.find((item) => item.id === phone.id);
   //   if (exist.quantity === 1) {
-  //     setCart(cart.filter((item) => item.id !== phone.id));
+  //     fetch(`http://localhost:3000/cart_items/reduce`, {
+  //       method: "POST",
+  //       credentials: "include",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+
+  //       body: JSON.stringify({ phone_id: phone.id }),
+  //     })
+  //       .then((res) => res.json())
+  //       .then(setCartPhones(cartPhones.filter((item) => item.id !== phone.id)));
   //   } else {
-  //     setCart(
-  //       cart.map((item) =>
-  //         item.id === phone.id
-  //           ? { ...exist, quantity: exist.quantity - 1 }
-  //           : item
-  //       )
-  //     );
-  //     setCartPhones(
-  //       cart.map((item) =>
-  //         item.id === phone.id
-  //           ? { ...exist, quantity: exist.quantity - 1 }
-  //           : item
-  //       )
-  //     );
+  //     fetch(`http://localhost:3000/cart_items/reduce`, {
+  //       method: "POST",
+  //       credentials: "include",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+
+  //       body: JSON.stringify({ phone_id: phone.id }),
+  //     })
+  //       .then((res) => res.json())
+  //       .then(
+  //         setCartQuantity(
+  //           cartQuantity.map((item) =>
+  //             item.id === phone.id
+  //               ? { ...exist, quantity: exist.quantity - 1 }
+  //               : item
+  //           )
+  //         )
+  //       );
   //   }
   // }
-
-  const cartContent = (data) => {
-    console.log(data);
-    console.log("data below is phones cart items");
-    setCartPhones(data);
-  };
-
-  const cartContentQuantity = (data) => {
-    console.log(data);
-    console.log("data below is quantity cart items");
-    setCartQuantity(data);
-  };
 
   useEffect(() => {
+    fetch("http://localhost:3000/Cart", {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then(setCartPhones);
+
     fetch("http://localhost:3000/authorized_user").then((res) => {
       if (res.ok) {
         res.json().then((user) => {
@@ -135,23 +143,29 @@ function App({}) {
       }
     });
 
+    // fetch(`http://localhost:3000/cart_items`, {
+    //   method: "POST",
+    //   credentials: "include",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+
+    //   body: JSON.stringify({ phone_id: 2 }),
+    // });
+
+    // fetch(`http://localhost:3000/cart_items/add`, {
+    //   method: "POST",
+    //   credentials: "include",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+
+    //   body: JSON.stringify({ phone_id: 1 }),
+    // });
+
     fetch("http://localhost:3000/phones")
       .then((res) => res.json())
       .then(setPhones);
-
-    fetch("http://localhost:3000/current_cart", {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then(cartContent);
-
-    fetch("http://localhost:3000/current_cart/cart_items", {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then(cartContentQuantity);
   }, []);
 
   return (
@@ -166,10 +180,6 @@ function App({}) {
               phones={phones}
               isOpen={isOpen}
               cartPhones={cartPhones}
-              cartQuantity={cartQuantity}
-              setCartPhones={setCartPhones}
-              setCartQuantity={setCartQuantity}
-              handleQuantiyAdd={handleQuantityAdd}
               setUser={setUser}
               setIsAuthenticated={setIsAuthenticated}
               user={user}
@@ -204,10 +214,10 @@ function App({}) {
           element={
             <Cart
               handleQuantityAdd={handleQuantityAdd}
+              // handleQuantityReduce={handleQuantityReduce}
+              // setCartQuantity={setCartQuantity}
               cartPhones={cartPhones}
-              cartQuantity={cartQuantity}
               setCartPhones={setCartPhones}
-              setCartQuantity={setCartQuantity}
             />
           }
         />

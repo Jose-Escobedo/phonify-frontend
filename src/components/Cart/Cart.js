@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CartItem from "./CartItem.js";
 import { NavLogo, NavImg } from "../Navbar/NavbarElements.js";
 import {
@@ -19,19 +19,42 @@ import {
 
 const Cart = ({
   handleQuantityAdd,
+  handleQuantityReduce,
+  cartQuantity,
   cartPhones,
   setCartPhones,
-  cartQuantity,
+  phoneInfo,
   toggleHome,
 }) => {
   const logo = require("../../images/logo.svg").default;
-  console.log("inside cart component");
-  console.log(cartPhones);
-  const itemsPrice = cartPhones.reduce((a, c) => a + c.price * c.quantity, 0);
+  const itemsPrice = cartPhones.reduce(
+    (sum, p) => sum + p.price * p.quantity,
+    0
+  );
   const taxPrice = itemsPrice * 0.095;
   const shippingPrice = itemsPrice > 1200 ? 0 : 25;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
   console.log(itemsPrice, taxPrice, shippingPrice, totalPrice);
+  console.log(cartPhones);
+  // function handleCart(data) {
+  //   const phones = { ...data };
+  //   setCartPhones(phones);
+  // }
+  // fetch("http://localhost:3000/Cart", {
+  //   method: "GET",
+  //   credentials: "include",
+  // })
+  //   .then((res) => res.json())
+  //   .then(setCartPhones);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/Cart", {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then(setCartPhones);
+  }, []);
 
   return (
     <CartandNav>
@@ -44,14 +67,14 @@ const Cart = ({
           {cartPhones.length === 0 && <div>Cart Is Empty</div>}
         </CartEmpty>
         <CartPhonesWrapper>
-          {cartPhones.map((cartItem, index) => {
+          {cartPhones.map((item, index) => {
             return (
               <CartItem
                 handleQuantityAdd={handleQuantityAdd}
-                cartItem={cartItem}
-                cartQuantity={cartQuantity}
-                setCartPhones={setCartPhones}
-                key={cartPhones.phone_id}
+                handleQuantityReduce={handleQuantityReduce}
+                cartItem={item}
+                cartPhones={cartPhones}
+                key={item.phone_id}
               />
             );
           })}
