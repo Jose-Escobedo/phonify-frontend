@@ -16,7 +16,7 @@ import {
   CartBtnLink,
 } from "./NavbarElements";
 const logo = require("../../images/logo.svg").default;
-const Navbar = ({ toggle, cartPhones, user, setUser, setIsAuthenticated }) => {
+const Navbar = ({ toggle, cartBadge, user, setUser, setIsAuthenticated }) => {
   const logout = () => {
     fetch("http://localhost:3000/logout", {
       method: "DELETE",
@@ -26,8 +26,6 @@ const Navbar = ({ toggle, cartPhones, user, setUser, setIsAuthenticated }) => {
     });
   };
 
-  // console.log("this is in navbar");
-  // console.log(cartPhones[Object.keys(cartPhones)[0]]);
   const [scrollNav, setScrollNav] = useState(false);
 
   const changeNav = () => {
@@ -126,9 +124,13 @@ const Navbar = ({ toggle, cartPhones, user, setUser, setIsAuthenticated }) => {
             )}
             <CartBtnLink to="/Cart">
               <FaShoppingCart className="shopping-cart" />
-              <span className="badge badge-warning" id="lblCartCount">
-                {cartPhones.length}
-              </span>
+              {cartBadge ? (
+                <span className="badge badge-warning" id="lblCartCount">
+                  {cartBadge}
+                </span>
+              ) : (
+                ""
+              )}
             </CartBtnLink>
           </NavBtn>
         </NavbarContainer>

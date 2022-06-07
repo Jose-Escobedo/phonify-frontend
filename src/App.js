@@ -4,20 +4,14 @@ import Signup from "./components/Signup/Signup";
 import { Routes, Route } from "react-router-dom";
 import Cart from "./components/Cart/Cart";
 import React, { useEffect, useState, useParams } from "react";
-
 import "./App.css";
-import { CartQuantity } from "./components/Cart/CartElements";
+
 function App({}) {
   const [isOpen, setIsOpen] = useState(false);
   const [phones, setPhones] = useState([]);
-  const [cartQuantity, setCartQuantity] = useState([]);
-  // const { Cart } = useParams();
-  const [cartInfo, setCartInfo] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const [cartPhones, setCartPhones] = useState(["1", "2"]);
-
-  const phoneInfo = cartPhones[Object.keys(cartPhones)[0]];
 
   console.log(cartPhones);
 
@@ -26,14 +20,9 @@ function App({}) {
   };
 
   const handleQuantityAdd = (phone) => {
-    const cartQuantityExist = cartPhones[Object.keys(cartPhones)[1]].find(
-      (item) => item.phone_id === phone.id
-    );
-    const cartPhonesExist = cartPhones[Object.keys(cartPhones)[0]].find(
-      (item) => item.phone_id === phone.id
-    );
+    const cartPhonesExist = cartPhones.find((item) => item.id === phone.id);
 
-    if (cartQuantityExist) {
+    if (cartPhonesExist) {
       fetch(`http://localhost:3000/cart_items/add`, {
         method: "POST",
         credentials: "include",
@@ -46,11 +35,11 @@ function App({}) {
         .then((res) => res.json())
         .then(
           setCartPhones(
-            cartQuantity.map((item) =>
-              item.phone_id === phone.id
+            cartPhones.map((item) =>
+              item.id === phone.id
                 ? {
-                    ...cartQuantityExist,
-                    quantity: cartQuantityExist.quantity + 1,
+                    ...cartPhonesExist,
+                    quantity: cartPhonesExist.quantity + 1,
                   }
                 : item
             )
@@ -67,64 +56,46 @@ function App({}) {
         body: JSON.stringify({ phone_id: phone.id }),
       })
         .then((res) => res.json())
-        .then(
-          setCartPhones({
-            cart_phones: [
-              cartPhones[Object.keys(cartPhones)[0]].map((item) =>
-                item.phone_id === phone.id ? { ...cartPhonesExist, item } : item
-              ),
-            ],
-
-            cart_quantity: [cartPhones[Object.keys(cartPhones)[1]]],
-          })
-        );
-
-      // .then(
-      //   setCartPhones(
-      //     cartPhones.map((item) =>
-      //       item.phone_id === phone.id ? [...cartPhones, item] : item
-      //     )
-      //   )
-      // );
+        .then(setCartPhones([...cartPhones, { ...phone, quantity: 1 }]));
     }
   };
 
-  // function handleQuantityReduce(phone) {
-  //   const exist = cartQuantity.find((item) => item.id === phone.id);
-  //   if (exist.quantity === 1) {
-  //     fetch(`http://localhost:3000/cart_items/reduce`, {
-  //       method: "POST",
-  //       credentials: "include",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
+  function handleQuantityReduce(phone) {
+    const exist = cartPhones.find((item) => item.id === phone.id);
+    if (exist.quantity === 1) {
+      fetch(`http://localhost:3000/cart_items/reduce`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-  //       body: JSON.stringify({ phone_id: phone.id }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then(setCartPhones(cartPhones.filter((item) => item.id !== phone.id)));
-  //   } else {
-  //     fetch(`http://localhost:3000/cart_items/reduce`, {
-  //       method: "POST",
-  //       credentials: "include",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
+        body: JSON.stringify({ phone_id: phone.id }),
+      })
+        .then((res) => res.json())
+        .then(setCartPhones(cartPhones.filter((item) => item.id !== phone.id)));
+    } else {
+      fetch(`http://localhost:3000/cart_items/reduce`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-  //       body: JSON.stringify({ phone_id: phone.id }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then(
-  //         setCartQuantity(
-  //           cartQuantity.map((item) =>
-  //             item.id === phone.id
-  //               ? { ...exist, quantity: exist.quantity - 1 }
-  //               : item
-  //           )
-  //         )
-  //       );
-  //   }
-  // }
+        body: JSON.stringify({ phone_id: phone.id }),
+      })
+        .then((res) => res.json())
+        .then(
+          setCartPhones(
+            cartPhones.map((item) =>
+              item.id === phone.id
+                ? { ...exist, quantity: exist.quantity - 1 }
+                : item
+            )
+          )
+        );
+    }
+  }
 
   useEffect(() => {
     fetch("http://localhost:3000/Cart", {
@@ -143,26 +114,6 @@ function App({}) {
       }
     });
 
-    // fetch(`http://localhost:3000/cart_items`, {
-    //   method: "POST",
-    //   credentials: "include",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-
-    //   body: JSON.stringify({ phone_id: 2 }),
-    // });
-
-    // fetch(`http://localhost:3000/cart_items/add`, {
-    //   method: "POST",
-    //   credentials: "include",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-
-    //   body: JSON.stringify({ phone_id: 1 }),
-    // });
-
     fetch("http://localhost:3000/phones")
       .then((res) => res.json())
       .then(setPhones);
@@ -179,10 +130,12 @@ function App({}) {
               toggle={toggle}
               phones={phones}
               isOpen={isOpen}
+              handleQuantityAdd={handleQuantityAdd}
               cartPhones={cartPhones}
               setUser={setUser}
               setIsAuthenticated={setIsAuthenticated}
               user={user}
+              cartBadge={cartPhones.length}
             />
           }
         />
@@ -214,8 +167,7 @@ function App({}) {
           element={
             <Cart
               handleQuantityAdd={handleQuantityAdd}
-              // handleQuantityReduce={handleQuantityReduce}
-              // setCartQuantity={setCartQuantity}
+              handleQuantityReduce={handleQuantityReduce}
               cartPhones={cartPhones}
               setCartPhones={setCartPhones}
             />

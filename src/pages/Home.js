@@ -21,14 +21,15 @@ const Home = ({
   cartQuantity,
   setCartPhones,
   setCartQuantity,
+  cartBadge,
 }) => {
   return (
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar
         toggle={toggle}
-        cartPhones={cartPhones}
         user={user}
+        cartBadge={cartBadge}
         setUser={setUser}
         setIsAuthenticated={setIsAuthenticated}
       />
@@ -37,14 +38,7 @@ const Home = ({
       <InfoSection {...aboutObj} />
       <TestimonialsSection {...TestimonialsSectionData} />
       <Services />
-      <Phones
-        phones={phones}
-        handleQuantityAdd={handleQuantityAdd}
-        cartPhones={cartPhones}
-        cartQuantity={cartQuantity}
-        setCartPhones={setCartPhones}
-        setCartQuantity={setCartQuantity}
-      />
+      <Phones phones={phones} handleQuantityAdd={handleQuantityAdd} />
       <InfoSection {...signupObj} />
       <Footer />
     </>

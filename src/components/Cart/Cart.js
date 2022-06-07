@@ -17,15 +17,7 @@ import {
   CheckoutBtnLink,
 } from "./CartElements";
 
-const Cart = ({
-  handleQuantityAdd,
-  handleQuantityReduce,
-  cartQuantity,
-  cartPhones,
-  setCartPhones,
-  phoneInfo,
-  toggleHome,
-}) => {
+const Cart = ({ handleQuantityAdd, handleQuantityReduce, cartPhones }) => {
   const logo = require("../../images/logo.svg").default;
   const itemsPrice = cartPhones.reduce(
     (sum, p) => sum + p.price * p.quantity,
@@ -34,27 +26,6 @@ const Cart = ({
   const taxPrice = itemsPrice * 0.095;
   const shippingPrice = itemsPrice > 1200 ? 0 : 25;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
-  console.log(itemsPrice, taxPrice, shippingPrice, totalPrice);
-  console.log(cartPhones);
-  // function handleCart(data) {
-  //   const phones = { ...data };
-  //   setCartPhones(phones);
-  // }
-  // fetch("http://localhost:3000/Cart", {
-  //   method: "GET",
-  //   credentials: "include",
-  // })
-  //   .then((res) => res.json())
-  //   .then(setCartPhones);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/Cart", {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then(setCartPhones);
-  }, []);
 
   return (
     <CartandNav>
@@ -74,7 +45,7 @@ const Cart = ({
                 handleQuantityReduce={handleQuantityReduce}
                 cartItem={item}
                 cartPhones={cartPhones}
-                key={item.phone_id}
+                key={item.id}
               />
             );
           })}

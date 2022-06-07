@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   CartH2,
   PhonesCard,
@@ -8,15 +8,7 @@ import {
   CartQuantity,
 } from "./CartElements";
 
-const CartItem = ({
-  cartItem,
-  cartQuantity,
-  handleQuantityAdd,
-  handleQuantityReduce,
-}) => {
-  let newArray = [cartItem];
-  let newArr = [cartQuantity];
-  console.log(newArray);
+const CartItem = ({ cartItem, handleQuantityAdd, handleQuantityReduce }) => {
   return (
     <PhonesCard>
       <PhonesIcon src={cartItem.image} alt={cartItem.name} />
