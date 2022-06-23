@@ -14,6 +14,7 @@ import {
   NavBtnLink,
   NavImg,
   CartBtnLink,
+  NavBtnLinkClear,
 } from "./NavbarElements";
 const logo = require("../../images/logo.svg").default;
 const Navbar = ({ toggle, cartBadge, user, setUser, setIsAuthenticated }) => {
@@ -103,18 +104,24 @@ const Navbar = ({ toggle, cartBadge, user, setUser, setIsAuthenticated }) => {
                 Phones
               </NavLinks>
             </NavItem>
-            <NavItem>
-              <NavLinks
-                to="signup"
-                smooth={true}
-                duration={500}
-                spy={true}
-                exact="true"
-                offset={-80}
-              >
-                Sign Up
-              </NavLinks>
-            </NavItem>
+            {user ? (
+              <NavItem>
+                <NavBtnLinkClear to="/orders">Orders</NavBtnLinkClear>
+              </NavItem>
+            ) : (
+              <NavItem>
+                <NavLinks
+                  to="signup"
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact="true"
+                  offset={-80}
+                >
+                  Sign Up
+                </NavLinks>
+              </NavItem>
+            )}
           </NavMenu>
           <NavBtn>
             {user ? (

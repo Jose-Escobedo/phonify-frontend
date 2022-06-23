@@ -1,8 +1,9 @@
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Signup from "./components/Signup/Signup";
+import Signup from "./pages/Signup";
+import Orders from "./pages/Orders";
 import { Routes, Route } from "react-router-dom";
-import Cart from "./components/Cart/Cart";
+import Cart from "./pages/Cart";
 import React, { useEffect, useState, useParams } from "react";
 import "./App.css";
 
@@ -173,6 +174,7 @@ function App({}) {
             />
           }
         />
+        <Route exact path="/orders" element={<Orders />} />
       </Routes>
     </>
   );

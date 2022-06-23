@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import CartItem from "./CartItem.js";
-import { NavLogo, NavImg } from "../Navbar/NavbarElements.js";
+import CartItem from "../components/Cart/CartItem.js";
+import { NavLogo, NavImg } from "../components/Navbar/NavbarElements.js";
 import {
   CartH1,
   CartContainer,
@@ -15,10 +15,10 @@ import {
   CartLogo,
   CheckoutButton,
   CheckoutBtnLink,
-} from "./CartElements";
+} from "../components/Cart/CartElements";
 
 const Cart = ({ handleQuantityAdd, handleQuantityReduce, cartPhones }) => {
-  const logo = require("../../images/logo.svg").default;
+  const logo = require("../images/logo.svg").default;
   const itemsPrice = cartPhones.reduce(
     (sum, p) => sum + p.price * p.quantity,
     0

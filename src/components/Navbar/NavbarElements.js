@@ -100,6 +100,30 @@ export const NavLinks = styled(LinkS)`
   }
 `;
 
+export const NavBtnLinkClear = styled(LinkR)`
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+
+  &:active {
+    border-bottom: 3px solid #00ffff;
+  }
+
+  @media screen and (max-width: 925px) {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  @media screen and (max-width: 840px) {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+`;
+
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;

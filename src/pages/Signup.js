@@ -12,7 +12,7 @@ import {
   FormH1,
   Container,
   Icon,
-} from "./SignupElements";
+} from "../components/Signup/SignupElements";
 
 const Signup = ({ setUser, setIsAuthenticated, user }) => {
   const [username, setUsername] = useState("");
