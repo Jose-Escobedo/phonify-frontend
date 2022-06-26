@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
+
 export const CartandNav = styled.div`
   display: flex;
-  height: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -12,55 +12,42 @@ export const CartandNav = styled.div`
   background: black;
 
   @media screen and (max-width: 768px) {
-    height: 2500px;
-    padding: 75px 0;
   }
 
   @media screen and (max-width: 1000px) {
-    height: 2500px;
   }
 
   @media screen and (max-width: 480px) {
-    height: 2200px;
   }
 `;
 export const CartContainer = styled.div`
   display: flex;
-  height: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   overflow: hidden;
-  background: white;
+  background: linear-gradient(#012529, black) padding-box;
 `;
 
 export const CartPhonesWrapper = styled.div`
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
   align-items: center;
   grid-gap: 2rem;
+  flex-wrap: wrap;
   z-index: 1;
-  overflow: hidden;
-  height: auto;
-  width: 100%;
-  max-width: 1100px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 24px 24px;
+  width: 90%;
+  padding: 1.5em 1.5em;
   justify-content: center;
 
   @media screen and (max-width: 1000px) {
+    display: grid;
     grid-template-columns: 1fr;
-    padding: 3px 26px;
-    height: 2300px;
   }
 
   @media screen and (max-width: 768px) {
+    display: grid;
     grid-template-columns: 1fr;
-    padding: 10px 26px;
-    height: 2300px;
   }
 `;
 
@@ -71,22 +58,23 @@ export const PhonesCard = styled.div`
   justify-content: flex-start;
   align-items: center;
   border-radius: 10px;
-  height: 370px;
-  padding: 30px;
+  border: 1px solid #00ffff;
+  min-height: 370px;
+  padding: 2em 5em;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2s);
   transition: all 0.2s ease-in-out;
   @media screen and (max-width: 768px) {
-    height: 270px;
+    min-height: 270px;
     width: 90%;
     margin: auto;
   }
   @media screen and (max-width: 1000px) {
-    height: 330px;
-    width: 85%;
+    min-height: 330px;
+    min-width: 60%;
     margin: auto;
   }
   @media screen and (max-width: 480px) {
-    height: 250px;
+    min-height: 250px;
     width: 85%;
     margin: auto;
   }
@@ -132,8 +120,9 @@ export const PhonesIcon = styled.img`
 
 export const CartH1 = styled.h1`
   font-size: 2.5rem;
-  color: #010106;
+  color: white;
   margin: 64px 10px;
+  font-family: "Montserrat", sans-serif;
 
   @media screen and (max-width: 650px) {
     font-size: 2rem;
@@ -210,15 +199,22 @@ export const CartLogo = styled.img`
 export const CartSummary = styled.div`
   display: flex;
   flex-direction: column;
-  width: 45%;
-  color: black;
-  height: 160px;
+  width: 90%;
+  color: white;
   justify-content: center;
+  align-items: center;
+  margin: 3em 0;
+  padding: 3em 2em;
 `;
 
 export const CartSummaryRow = styled.div`
   display: flex;
+  width: 100%;
+  padding: 0.5em 25em;
   justify-content: space-between;
+  @media screen and (max-width: 1400px) {
+    padding: 0.5rem 15em;
+  }
 `;
 
 export const CheckoutButton = styled.nav`
@@ -230,11 +226,11 @@ export const CheckoutButton = styled.nav`
 
 export const CheckoutBtnLink = styled(LinkR)`
   border-radius: 50px;
-  background: #010606;
+  background: white;
   white-space: nowrap;
   padding: 10px 100px;
-  color: white;
-  font-size: 16px;
+  color: black;
+  font-size: 1.2rem;
   outline: none;
   border: none;
   cursor: pointer;
@@ -250,6 +246,7 @@ export const CheckoutBtnLink = styled(LinkR)`
 
 export const CartSummaryColumn1 = styled.div`
   font-size: 1.5rem;
+  border-bottom: 1px solid #00ffff;
 `;
 export const CartSummaryColumn2 = styled.div`
   font-size: 1.5rem;
