@@ -5,13 +5,11 @@ import {
   CartH1,
   CartContainer,
   CartPhonesWrapper,
-  CartEmpty,
-  CartH2,
   CartSummary,
   CartSummaryRow,
   CartSummaryColumn1,
   CartSummaryColumn2,
-  CartandNav,
+  CartNav,
   CartLogo,
   CheckoutButton,
   CheckoutBtnLink,
@@ -28,15 +26,16 @@ const Cart = ({ handleQuantityAdd, handleQuantityReduce, cartPhones }) => {
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
 
   return (
-    <CartandNav>
-      <NavLogo to="/">
-        <CartLogo src={logo} />
-      </NavLogo>
+    <>
+      <CartNav>
+        <NavLogo to="/">
+          <CartLogo src={logo} />
+        </NavLogo>
+      </CartNav>
       <CartContainer id="phone-card">
-        <CartH1>Your Cart Items</CartH1>
-        <CartEmpty>
-          {cartPhones.length === 0 && <div>Cart Is Empty</div>}
-        </CartEmpty>
+        <CartH1>
+          {cartPhones.length === 0 ? "Cart Is Empty" : "Your Cart Items"}
+        </CartH1>
         <CartPhonesWrapper>
           {cartPhones.map((item, index) => {
             return (
@@ -82,7 +81,7 @@ const Cart = ({ handleQuantityAdd, handleQuantityReduce, cartPhones }) => {
           </>
         )}
       </CartContainer>
-    </CartandNav>
+    </>
   );
 };
 

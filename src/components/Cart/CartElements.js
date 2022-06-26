@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
 
-export const CartandNav = styled.div`
+export const CartNav = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  overflow: hidden;
   padding: 0;
   background: black;
 
@@ -27,6 +26,7 @@ export const CartContainer = styled.div`
   align-items: center;
   width: 100%;
   overflow: hidden;
+  min-height: calc(100vh - 80px);
   background: linear-gradient(#012529, black) padding-box;
 `;
 
@@ -143,20 +143,6 @@ export const CartH2 = styled.h2`
   }
 `;
 
-export const CartEmpty = styled.div`
-  color: #010106;
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-
-  @media screen and (max-width: 650px) {
-    font-size: 0.9rem;
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 0.8rem;
-  }
-`;
-
 export const CartUpdateButton = styled.button`
   border-radius: 30px;
   background: #00ffff;
@@ -193,6 +179,7 @@ export const CartUpdateButtonWrapper = styled.div`
 export const CartLogo = styled.img`
   width: 200px;
   height: 80px;
+  display: block;
   padding: 10px 0;
 `;
 
