@@ -13,6 +13,8 @@ import {
   CartLogo,
   CheckoutButton,
   CheckoutBtnLink,
+  ArrowForward,
+  ArrowRight,
 } from "../components/Cart/CartElements";
 
 const Cart = ({
@@ -22,6 +24,13 @@ const Cart = ({
   setCartPhones,
 }) => {
   const logo = require("../images/logo.svg").default;
+
+  const [hover, setHover] = useState(false);
+
+  const onHover = () => {
+    setHover(!hover);
+  };
+
   const itemsPrice = cartPhones.reduce(
     (sum, p) => sum + p.price * p.quantity,
     0
@@ -81,7 +90,13 @@ const Cart = ({
               </CartSummaryRow>
             </CartSummary>
             <CheckoutButton>
-              <CheckoutBtnLink to="/">Checkout</CheckoutBtnLink>
+              <CheckoutBtnLink
+                to="/Checkout"
+                onMouseEnter={onHover}
+                onMouseLeave={onHover}
+              >
+                Proceed to Checkout {hover ? <ArrowForward /> : <ArrowRight />}
+              </CheckoutBtnLink>
             </CheckoutButton>
           </>
         )}

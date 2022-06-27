@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
+import { MdKeyboardArrowRight, MdArrowForward } from "react-icons/md";
 
 export const CartNav = styled.div`
   display: flex;
@@ -202,12 +203,25 @@ export const CartSummaryRow = styled.div`
   @media screen and (max-width: 1400px) {
     padding: 0.5rem 15em;
   }
+  @media screen and (max-width: 1000px) {
+    padding: 0.5em 10em;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 0.5em 5em;
+  }
+  @media screen and (max-width: 600px) {
+    padding: 0.5em 2.5em;
+  }
+  @media screen and (max-width: 480px) {
+    padding: 0.5em 1.25em;
+  }
 `;
 
 export const CheckoutButton = styled.nav`
   display: flex;
   align-items: center;
-  height: 130px;
+  min-height: 100px;
+  justify-content: center;
   margin: auto;
 `;
 
@@ -215,7 +229,7 @@ export const CheckoutBtnLink = styled(LinkR)`
   border-radius: 50px;
   background: white;
   white-space: nowrap;
-  padding: 10px 100px;
+  padding: 0.5em 3em;
   color: black;
   font-size: 1.2rem;
   outline: none;
@@ -229,12 +243,41 @@ export const CheckoutBtnLink = styled(LinkR)`
     background: #00ffff;
     color: #010606;
   }
+
+  @media screen and (max-width: 1000px) {
+    font-size: 1rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 0.7rem;
+  }
+`;
+
+export const ArrowForward = styled(MdArrowForward)`
+  margin-left: 8px;
+  font-size: 1.2rem;
+  vertical-align: middle;
+`;
+
+export const ArrowRight = styled(MdKeyboardArrowRight)`
+  margin-left: 8px;
+  font-size: 1.2rem;
+  vertical-align: middle;
 `;
 
 export const CartSummaryColumn1 = styled.div`
   font-size: 1.5rem;
   border-bottom: 1px solid #00ffff;
+  @media screen and (max-width: 480px) {
+    font-size: 1.2rem;
+  }
 `;
 export const CartSummaryColumn2 = styled.div`
   font-size: 1.5rem;
+  @media screen and (max-width: 480px) {
+    font-size: 1.2rem;
+  }
 `;
