@@ -1,5 +1,5 @@
 import React from "react";
-import { RouterBtn, RouterBtnLink } from "../RouterButtonLinkElements";
+import { ScrollBtn, ScrollBtnLink } from "../ButtonElements";
 
 import {
   InfoContainer,
@@ -42,9 +42,18 @@ const InfoSection = ({
                 <TopLine darkText={darkText}>{topLine}</TopLine>
                 <Heading lightText={lightText}>{headline}</Heading>
                 <Subtitle darkText={darkText}>{description}</Subtitle>
-                <RouterBtn>
-                  <RouterBtnLink to="/Signup">Sign up</RouterBtnLink>
-                </RouterBtn>
+                <ScrollBtn>
+                  <ScrollBtnLink
+                    to="phone-card"
+                    smooth={"true"}
+                    duration={500}
+                    spy={true}
+                    exact="true"
+                    offset={-80}
+                  >
+                    Buy Now
+                  </ScrollBtnLink>
+                </ScrollBtn>
               </TextWrapper>
             </Column1>
             <Column2>

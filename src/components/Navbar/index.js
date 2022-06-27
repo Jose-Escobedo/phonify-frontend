@@ -83,7 +83,7 @@ const Navbar = ({ toggle, cartBadge, user, setUser, setIsAuthenticated }) => {
             <NavItem>
               <NavLinks
                 to="services"
-                smooth={true}
+                smooth={"true"}
                 duration={500}
                 spy={true}
                 exact="true"

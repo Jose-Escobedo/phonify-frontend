@@ -7,7 +7,7 @@ export const aboutObj = {
   headline: "Phonify customers enjoy zero fees.",
   description:
     "Get access to exclusive deals when you buy and order through our website.",
-  buttonLabel: "Get started",
+  buttonLabel: "Buy now",
   imgStart: false,
   img: require("../../images/svg-4.svg").default,
   alt: "phone-laptop",

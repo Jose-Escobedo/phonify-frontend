@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const ServicesContainer = styled.div`
   display: flex;
-  height: 700px;
-  padding: 75px 0;
+  min-height: calc(100vh - 80px);
+  padding: 70px 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -13,11 +13,11 @@ export const ServicesContainer = styled.div`
     min-height: 1100px;
   }
   @media screen and (max-width: 1000px) {
-    height: 850px;
+    min-height: 850px;
   }
 
   @media screen and (max-width: 480px) {
-    height: 1100px;
+    min-height: 1100px;
   }
 `;
 
