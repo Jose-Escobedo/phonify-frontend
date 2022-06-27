@@ -7,10 +7,13 @@ import {
   SidebarMenu,
   SidebarLink,
   SideBtnWrap,
-  SidebarRoute,
+  SidebarImg,
+  SidebarLogo,
 } from "./SidebarElements";
 
 const Sidebar = ({ isOpen, toggle }) => {
+  const logo = require("../../images/logo.svg").default;
+
   return (
     <SidebarContainer isOpen={isOpen} toggle={toggle}>
       <Icon onClick={toggle}>
@@ -30,12 +33,11 @@ const Sidebar = ({ isOpen, toggle }) => {
           <SidebarLink to="phone-card" onClick={toggle}>
             Phones
           </SidebarLink>
-          <SidebarLink to="signup" onClick={toggle}>
-            Sign Up
-          </SidebarLink>
         </SidebarMenu>
         <SideBtnWrap>
-          <SidebarRoute to="/login">Login</SidebarRoute>
+          <SidebarLogo to="home" onClick={toggle}>
+            <SidebarImg src={logo} />
+          </SidebarLogo>
         </SideBtnWrap>
       </SidebarWrapper>
     </SidebarContainer>

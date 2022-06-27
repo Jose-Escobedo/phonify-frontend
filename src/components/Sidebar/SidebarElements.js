@@ -70,22 +70,39 @@ export const SideBtnWrap = styled.div`
   justify-content: center;
 `;
 
-export const SidebarRoute = styled(LinkR)`
-  border-radius: 50px;
-  background: #00ffff;
-  white-space: nowrap;
-  padding: 16px 64px;
-  color: #010606;
-  font-size: 16px;
-  outline: none;
-  border: none;
+export const SidebarLogo = styled(LinkS)`
+  color: #fff;
+  justify-self: flex-start;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+  font-weight: bold;
   text-decoration: none;
-
-  &:hover {
-    transition: all 0.2s ease-in-out;
-    background: #fff;
-    color: #010606;
-  }
 `;
+
+export const SidebarImg = styled.img`
+  width: 200px;
+  height: 70px;
+`;
+
+// export const SidebarRoute = styled(LinkR)`
+//   border-radius: 50px;
+//   background: #00ffff;
+//   white-space: nowrap;
+//   padding: 16px 64px;
+//   color: #010606;
+//   font-size: 16px;
+//   outline: none;
+//   border: none;
+//   cursor: pointer;
+//   transition: all 0.2s ease-in-out;
+//   text-decoration: none;
+
+//   &:hover {
+//     transition: all 0.2s ease-in-out;
+//     background: #fff;
+//     color: #010606;
+//   }
+// `;

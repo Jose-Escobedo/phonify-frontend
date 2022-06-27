@@ -104,7 +104,7 @@ const Navbar = ({ toggle, cartBadge, user, setUser, setIsAuthenticated }) => {
                 Phones
               </NavLinks>
             </NavItem>
-            {user ? (
+            {/* {user ? (
               <NavItem>
                 <NavBtnLinkClear to="/orders">Orders</NavBtnLinkClear>
               </NavItem>
@@ -121,14 +121,14 @@ const Navbar = ({ toggle, cartBadge, user, setUser, setIsAuthenticated }) => {
                   Sign Up
                 </NavLinks>
               </NavItem>
-            )}
+            )} */}
           </NavMenu>
           <NavBtn>
-            {user ? (
+            {/* {user ? (
               <ButtonTag onClick={logout}>Logout</ButtonTag>
             ) : (
               <NavBtnLink to="/Login">Login</NavBtnLink>
-            )}
+            )} */}
             <CartBtnLink to="/Cart">
               <FaShoppingCart className="shopping-cart" />
               {cartBadge ? (

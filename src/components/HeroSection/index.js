@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Video from "../../videos/video.mp4";
-import { Button } from "../ButtonElements";
+import { Button } from "../HeroSection/HeroElements";
 
 import {
   HeroContainer,
@@ -29,23 +29,22 @@ const HeroSection = () => {
       <HeroContent>
         <HeroH1>Mobile Phone Shopping Made Easy</HeroH1>
         <HeroP>
-          Sign up for a new account today and receive a $50 credit towards your
-          next payment.
+          Buy a phone today and receive a $50 credit towards your next payment.
         </HeroP>
         <HeroBtnWrapper>
           <Button
             primary="true"
             dark="true"
-            to="/Signup"
+            to="phone-card"
             onMouseEnter={onHover}
             onMouseLeave={onHover}
             smooth={"true"}
             duration={500}
-            spy={"true"}
+            spy={true}
             exact="true"
             offset={-80}
           >
-            Get started {hover ? <ArrowForward /> : <ArrowRight />}
+            Pick a phone {hover ? <ArrowForward /> : <ArrowRight />}
           </Button>
         </HeroBtnWrapper>
       </HeroContent>

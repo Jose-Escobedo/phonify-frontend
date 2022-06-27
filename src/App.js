@@ -1,7 +1,8 @@
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Orders from "./pages/Orders";
+// import Signup from "./pages/Signup";
+// import Orders from "./pages/Orders";
+import Checkout from "./pages/Checkout";
 import { Routes, Route } from "react-router-dom";
 import Cart from "./pages/Cart";
 import React, { useEffect, useState, useParams } from "react";
@@ -10,7 +11,7 @@ import "./App.css";
 function App({}) {
   const [isOpen, setIsOpen] = useState(false);
   const [phones, setPhones] = useState([]);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const [cartPhones, setCartPhones] = useState(["1", "2"]);
 
@@ -106,14 +107,14 @@ function App({}) {
       .then((res) => res.json())
       .then(setCartPhones);
 
-    fetch("http://localhost:3000/authorized_user").then((res) => {
-      if (res.ok) {
-        res.json().then((user) => {
-          setIsAuthenticated(true);
-          setUser(user);
-        });
-      }
-    });
+    // fetch("http://localhost:3000/authorized_user").then((res) => {
+    //   if (res.ok) {
+    //     res.json().then((user) => {
+    //       setIsAuthenticated(true);
+    //       setUser(user);
+    //     });
+    //   }
+    // });
 
     fetch("http://localhost:3000/phones")
       .then((res) => res.json())
@@ -133,14 +134,14 @@ function App({}) {
               isOpen={isOpen}
               handleQuantityAdd={handleQuantityAdd}
               cartPhones={cartPhones}
-              setUser={setUser}
-              setIsAuthenticated={setIsAuthenticated}
-              user={user}
+              // setUser={setUser}
+              // setIsAuthenticated={setIsAuthenticated}
+              // user={user}
               cartBadge={cartPhones.length}
             />
           }
         />
-        <Route
+        {/* <Route
           exact
           path="/Login"
           element={
@@ -150,8 +151,8 @@ function App({}) {
               user={user}
             />
           }
-        />
-        <Route
+        /> */}
+        {/* <Route
           exact
           path="/Signup"
           element={
@@ -161,7 +162,7 @@ function App({}) {
               user={user}
             />
           }
-        />
+        /> */}
         <Route
           exact
           path="/Cart"
@@ -174,7 +175,7 @@ function App({}) {
             />
           }
         />
-        <Route exact path="/orders" element={<Orders />} />
+        <Route exact path="/checkout" element={<Checkout />} />
       </Routes>
     </>
   );
