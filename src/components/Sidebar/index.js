@@ -6,6 +6,7 @@ import {
   SidebarWrapper,
   SidebarMenu,
   SidebarLink,
+  SidebarLinkR,
   SideBtnWrap,
   SidebarImg,
   SidebarLogo,
@@ -33,6 +34,9 @@ const Sidebar = ({ isOpen, toggle }) => {
           <SidebarLink to="phone-card" onClick={toggle}>
             Phones
           </SidebarLink>
+          <SidebarLinkR to="/Cart" onClick={toggle}>
+            Cart
+          </SidebarLinkR>
         </SidebarMenu>
         <SideBtnWrap>
           <SidebarLogo to="home" onClick={toggle}>
