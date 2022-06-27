@@ -15,7 +15,12 @@ import {
   CheckoutBtnLink,
 } from "../components/Cart/CartElements";
 
-const Cart = ({ handleQuantityAdd, handleQuantityReduce, cartPhones }) => {
+const Cart = ({
+  handleQuantityAdd,
+  handleQuantityReduce,
+  cartPhones,
+  setCartPhones,
+}) => {
   const logo = require("../images/logo.svg").default;
   const itemsPrice = cartPhones.reduce(
     (sum, p) => sum + p.price * p.quantity,
