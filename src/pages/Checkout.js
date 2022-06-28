@@ -1,9 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
 
-const Checkout = () => {
+const Checkout = ({ cartTotal, addNewFormData }) => {
   const logo = require("../images/logo.svg").default;
+
+  const blankForm = {
+    name: "",
+    email: "",
+    address: "",
+    pay_method: "",
+    delivery_instructions: "",
+    total: cartTotal,
+  };
+  const [newFormData, setFormData] = useState(blankForm);
+  const { name, email, address, delivery_instructions, pay_method, total } =
+    newFormData;
+
+  function handleNameChange(e) {
+    setFormData({
+      ...newFormData,
+      name: e.target.value,
+    });
+    console.log(newFormData);
+  }
+
+  function handleEmailChange(e) {
+    setFormData({
+      ...newFormData,
+      email: e.target.value,
+    });
+    console.log(newFormData);
+  }
+
+  function handleAddressChange(e) {
+    setFormData({
+      ...newFormData,
+      address: e.target.value,
+    });
+    console.log(newFormData);
+  }
+
+  function handleDevliveryInstructionsChange(e) {
+    setFormData({
+      ...newFormData,
+      delivery_instructions: e.target.value,
+    });
+    console.log(newFormData);
+  }
+
+  function handlePayChange(e) {
+    setFormData({
+      ...newFormData,
+      pay_method: e.target.value,
+    });
+    console.log(newFormData);
+  }
+
+  //   function handleTotalChange(e) {
+  //     setFormData({
+  //       ...newFormData,
+  //       total: e.target.value,
+  //     });
+  //     console.log(newFormData);
+  //   }
+
+  const handleForm = (e) => {
+    e.preventDefault();
+    addNewFormData(newFormData);
+    setFormData(blankForm);
+  };
 
   return (
     <>
@@ -13,12 +79,14 @@ const Checkout = () => {
         </CheckoutNav>
         <CheckoutMain>
           <CheckoutMainH1>Checkout</CheckoutMainH1>
-          <CheckoutForm>
+          <CheckoutForm onSubmit={handleForm}>
             <input
               type="text"
               id="name"
               placeholder="NAME"
               name="name"
+              value={newFormData.name}
+              onChange={handleNameChange}
               required
             />
             <input
@@ -26,19 +94,29 @@ const Checkout = () => {
               id="email"
               placeholder="EMAIL"
               name="email"
+              value={newFormData.email}
+              onChange={handleEmailChange}
               required
             />
             <input
-              type="address"
+              type="text"
               id="address"
               placeholder="ADDRESS"
               name="address"
+              value={newFormData.address}
+              onChange={handleAddressChange}
               required
             />
             <PayMethod>
-              <label for="pay-method">PAY METHOD:</label>
-              <select id="pay-method" name="pay-method" required>
-                <option selected disabled value="">
+              <label htmlFor="pay_method">PAY METHOD:</label>
+              <select
+                id="pay_method"
+                name="pay_method"
+                value={newFormData.pay_method}
+                onChange={handlePayChange}
+                required
+              >
+                <option defaultValue disabled value="">
                   {" "}
                   -- select an option --{" "}
                 </option>
@@ -52,7 +130,9 @@ const Checkout = () => {
             <textarea
               rows="6"
               placeholder="DELIVERY INSTRUCTIONS"
-              name="delivery-instructions"
+              name="delivery_instructions"
+              value={newFormData.delivery_instructions}
+              onChange={handleDevliveryInstructionsChange}
             ></textarea>
             <CheckoutButton id="submit" type="submit" value="SEND">
               Submit Order
@@ -156,7 +236,7 @@ const CheckoutForm = styled.form`
     width: 100%;
     max-width: 100%;
     min-width: 100%;
-    min-height: 2rem;
+    min-height: 2.1rem;
     background-color: transparent;
     color: white;
     letter-spacing: 1px;

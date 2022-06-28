@@ -99,6 +99,19 @@ function App({}) {
     }
   }
 
+  const addNewFormData = (e) => {
+    fetch("http://localhost:3000/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(e),
+    })
+      .then((res) => res.json())
+      .then(console.log("success"));
+    // setCart([...Cart, e])
+  };
+
   useEffect(() => {
     fetch("http://localhost:3000/Cart", {
       method: "GET",
@@ -175,7 +188,11 @@ function App({}) {
             />
           }
         />
-        <Route exact path="/checkout" element={<Checkout />} />
+        <Route
+          exact
+          path="/checkout"
+          element={<Checkout addNewFormData={addNewFormData} />}
+        />
       </Routes>
     </>
   );
