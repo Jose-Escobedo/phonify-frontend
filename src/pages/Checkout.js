@@ -35,11 +35,24 @@ const Checkout = () => {
               name="address"
               required
             />
+            <PayMethod>
+              <label for="pay-method">PAY METHOD:</label>
+              <select id="pay-method" name="pay-method" required>
+                <option selected disabled value="">
+                  {" "}
+                  -- select an option --{" "}
+                </option>
+                <option value="paypal">PAYPAL</option>
+                <option value="stripe">STRIPE</option>
+                <option value="visa">VISA</option>
+                <option value="mastercard">MASTERCARD</option>
+              </select>
+            </PayMethod>
+
             <textarea
               rows="6"
               placeholder="DELIVERY INSTRUCTIONS"
               name="delivery-instructions"
-              required
             ></textarea>
             <CheckoutButton id="submit" type="submit" value="SEND">
               Submit Order
@@ -97,6 +110,12 @@ const CheckoutMainH1 = styled.h1`
   padding-top: 0.7em;
 `;
 
+const PayMethod = styled.div`
+  display: flex;
+  width: 100%;
+  border: 1px solid white;
+`;
+
 const CheckoutForm = styled.form`
   display: flex;
   justify-content: center;
@@ -112,6 +131,25 @@ const CheckoutForm = styled.form`
     color: white;
     border: 1px solid white;
     padding: 0.5em 0.5em;
+    font-size: 1rem;
+  }
+  label {
+    background-color: transparent;
+    color: grey;
+    border: 1px solid white;
+    padding: 0.5em 0.5em;
+    font-size: 1rem;
+  }
+
+  select {
+    border: 1px solid white;
+    border-left: none;
+    background-color: transparent;
+    color: grey;
+  }
+
+  option {
+    color: black;
   }
 
   textarea {
@@ -125,6 +163,7 @@ const CheckoutForm = styled.form`
     border: 1px solid white;
     padding: 0.5em 0.5em;
     margin-bottom: 2em;
+    font-size: 1rem;
   }
 `;
 
