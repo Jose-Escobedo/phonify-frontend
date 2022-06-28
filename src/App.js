@@ -102,6 +102,7 @@ function App({}) {
   const addNewFormData = (e) => {
     fetch("http://localhost:3000/orders", {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -191,7 +192,9 @@ function App({}) {
         <Route
           exact
           path="/checkout"
-          element={<Checkout addNewFormData={addNewFormData} />}
+          element={
+            <Checkout addNewFormData={addNewFormData} cartPhones={cartPhones} />
+          }
         />
       </Routes>
     </>

@@ -2,8 +2,16 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
 
-const Checkout = ({ cartTotal, addNewFormData }) => {
+const Checkout = ({ addNewFormData, cartPhones }) => {
   const logo = require("../images/logo.svg").default;
+
+  const itemsPrice = cartPhones.reduce(
+    (sum, p) => sum + p.price * p.quantity,
+    0
+  );
+  const taxPrice = itemsPrice * 0.095;
+  const shippingPrice = itemsPrice > 1200 ? 0 : 25;
+  const totalPrice = itemsPrice + taxPrice + shippingPrice;
 
   const blankForm = {
     name: "",
@@ -11,8 +19,9 @@ const Checkout = ({ cartTotal, addNewFormData }) => {
     address: "",
     pay_method: "",
     delivery_instructions: "",
-    total: cartTotal,
+    total: totalPrice.toFixed(2),
   };
+
   const [newFormData, setFormData] = useState(blankForm);
   const { name, email, address, delivery_instructions, pay_method, total } =
     newFormData;
