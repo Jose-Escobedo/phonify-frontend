@@ -14,7 +14,7 @@ const Checkout = () => {
         <CheckoutMain>
           <CheckoutMainH1>Checkout</CheckoutMainH1>
           <CheckoutForm>
-            {/* <input
+            <input
               type="text"
               id="name"
               placeholder="NAME"
@@ -28,19 +28,22 @@ const Checkout = () => {
               name="email"
               required
             />
+            <input
+              type="address"
+              id="address"
+              placeholder="ADDRESS"
+              name="address"
+              required
+            />
             <textarea
               rows="6"
-              placeholder="MESSAGE"
-              name="message"
+              placeholder="DELIVERY INSTRUCTIONS"
+              name="delivery-instructions"
               required
             ></textarea>
-            <CheckoutButton
-              id="submit"
-              type="submit"
-              value="SEND"
-            >
-            Submit Order
-            </ChekcoutButton> */}
+            <CheckoutButton id="submit" type="submit" value="SEND">
+              Submit Order
+            </CheckoutButton>
           </CheckoutForm>
         </CheckoutMain>
       </CheckoutContainer>
@@ -80,7 +83,9 @@ const CheckoutMain = styled.div`
   align-items: center;
   background: red;
   width: 100%;
+  padding-bottom: 0.7em;
   min-height: calc(100vh - 80px);
+  max-height: calc(100vh - 80px);
   background: linear-gradient(#012529, black) padding-box;
 `;
 
@@ -89,11 +94,60 @@ const CheckoutMainH1 = styled.h1`
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   color: white;
+  padding-top: 0.7em;
 `;
 
 const CheckoutForm = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  min-height: 50vh;
+  width: 40%;
+  margin-top: 2em;
+
+  input {
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 0.5em 0.5em;
+  }
+
+  textarea {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 2rem;
+    background-color: transparent;
+    color: white;
+    letter-spacing: 1px;
+    border: 1px solid white;
+    padding: 0.5em 0.5em;
+    margin-bottom: 2em;
+  }
+`;
+
+const CheckoutButton = styled.button`
+  border-radius: 50px;
+  background: #00ffff;
+  white-space: nowrap;
+  padding: 1em 2em;
+  color: black;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: white;
+    color: black;
+  }
 `;
 export default Checkout;
