@@ -3,13 +3,7 @@ import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-const Checkout = ({
-  addNewFormData,
-  cartPhones,
-  setCartPhones,
-  cartItems,
-  setCartItems,
-}) => {
+const Checkout = ({ addNewFormData, cartPhones, setCartPhones, cartItems }) => {
   const logo = require("../images/logo.svg").default;
 
   const itemsPrice = cartPhones.reduce(
@@ -95,7 +89,7 @@ const Checkout = ({
   return (
     <>
       {navigateToggle ? (
-        <Navigate to="/" />
+        <Navigate to="/orderconfirm" />
       ) : (
         <CheckoutContainer>
           <CheckoutNav to="/">

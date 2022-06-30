@@ -11,7 +11,6 @@ import {
   TopLine,
   Heading,
   Subtitle,
-  BtnWrap,
   ImgWrap,
   Img,
 } from "./InfoElements";
@@ -23,14 +22,10 @@ const InfoSection = ({
   headline,
   lightText,
   darkText,
-  buttonLabel,
   img,
   alt,
   description,
   id,
-  primary,
-  dark,
-  dark2,
 }) => {
   return (
     <>

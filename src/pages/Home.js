@@ -4,7 +4,7 @@ import Services from "../components/Services";
 import Phones from "../components/Phones/Phones";
 import TestimonialsSection from "../components/TestimonialsSection/TestimonialsSection";
 import { TestimonialsSectionData } from "../components/TestimonialsSection/TestimonialsSectionData";
-import { aboutObj, signupObj } from "../components/InfoSection/Data";
+import { aboutObj } from "../components/InfoSection/Data";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
@@ -27,7 +27,6 @@ const Home = ({
         setCartItems={setCartItems}
         cartPhones={cartPhones}
       />
-
       <HeroSection />
       <InfoSection {...aboutObj} />
       <TestimonialsSection {...TestimonialsSectionData} />

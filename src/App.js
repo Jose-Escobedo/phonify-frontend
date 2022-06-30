@@ -7,11 +7,11 @@ import { Routes, Route } from "react-router-dom";
 import Cart from "./pages/Cart";
 import React, { useEffect, useState, useParams } from "react";
 import "./App.css";
+import OrderConfirm from "./pages/OrderConfirm";
 
 function App({}) {
   const [isOpen, setIsOpen] = useState(false);
   const [phones, setPhones] = useState([]);
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
   const [cartPhones, setCartPhones] = useState([]);
   const [cartItems, setCartItems] = useState(null);
@@ -111,7 +111,6 @@ function App({}) {
     })
       .then((res) => res.json())
       .then(setCartPhones);
-    // setCart([...Cart, e])
   };
 
   useEffect(() => {
@@ -154,28 +153,6 @@ function App({}) {
             />
           }
         />
-        {/* <Route
-          exact
-          path="/Login"
-          element={
-            <Login
-              setUser={setUser}
-              setIsAuthenticated={setIsAuthenticated}
-              user={user}
-            />
-          }
-        /> */}
-        {/* <Route
-          exact
-          path="/Signup"
-          element={
-            <Signup
-              setUser={setUser}
-              setIsAuthenticated={setIsAuthenticated}
-              user={user}
-            />
-          }
-        /> */}
         <Route
           exact
           path="/Cart"
@@ -202,43 +179,10 @@ function App({}) {
             />
           }
         />
+        <Route exact path="/orderconfirm" element={<OrderConfirm />} />
       </Routes>
     </>
   );
 }
 
 export default App;
-
-// function handlePhoneAdd(phone) {
-//   const exist = cart.find((item) => item.id === phone.id);
-//   console.log(phone);
-//   if (exist) {
-//     fetch(`http://localhost:3000/Cart/add_quantity/${phone.id}`, {
-//       method: "PATCH",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ quantity: exist.quantity + 1 }),
-//     })
-//       .then((res) => res.json())
-//       .then(
-//         setCart(
-//           cart.map((item) =>
-//             item.id === phone.id
-//               ? { ...exist, quantity: exist.quantity + 1 }
-//               : item
-//           )
-//         )
-//       );
-//   } else {
-//     fetch(`http://localhost:3000/Cart/add_to_cart/${phone.id}`, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ quantity: 1 }),
-//     })
-//       .then((res) => res.json())
-//       .then(setCart([...cart, { ...phone, quantity: 1 }]));
-//   }
-// }

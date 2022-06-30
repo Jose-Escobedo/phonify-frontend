@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaBars, FaShoppingCart } from "react-icons/fa";
 import { animateScroll as scroll } from "react-scroll/modules";
-import { ButtonTag } from "../ButtonElements";
 import {
   Nav,
   NavbarContainer,
@@ -11,30 +10,11 @@ import {
   NavItem,
   NavLinks,
   NavBtn,
-  NavBtnLink,
   NavImg,
   CartBtnLink,
-  NavBtnLinkClear,
 } from "./NavbarElements";
 const logo = require("../../images/logo.svg").default;
-const Navbar = ({
-  toggle,
-  cartBadge,
-  setCartItems,
-  cartPhones,
-  user,
-  setUser,
-  setIsAuthenticated,
-}) => {
-  const logout = () => {
-    fetch("http://localhost:3000/logout", {
-      method: "DELETE",
-    }).then(() => {
-      setIsAuthenticated(false);
-      setUser(null);
-    });
-  };
-
+const Navbar = ({ toggle, cartBadge, setCartItems, cartPhones }) => {
   useEffect(() => {
     setCartItems(cartPhones.length);
   }, [cartPhones]);
@@ -63,7 +43,6 @@ const Navbar = ({
           <NavLogo to="/" onClick={toggleHome}>
             <NavImg src={logo} />
           </NavLogo>
-
           <MobileIcon onClick={toggle}>
             <FaBars />
           </MobileIcon>
@@ -116,31 +95,8 @@ const Navbar = ({
                 Phones
               </NavLinks>
             </NavItem>
-            {/* {user ? (
-              <NavItem>
-                <NavBtnLinkClear to="/orders">Orders</NavBtnLinkClear>
-              </NavItem>
-            ) : (
-              <NavItem>
-                <NavLinks
-                  to="signup"
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  exact="true"
-                  offset={-80}
-                >
-                  Sign Up
-                </NavLinks>
-              </NavItem>
-            )} */}
           </NavMenu>
           <NavBtn>
-            {/* {user ? (
-              <ButtonTag onClick={logout}>Logout</ButtonTag>
-            ) : (
-              <NavBtnLink to="/Login">Login</NavBtnLink>
-            )} */}
             <CartBtnLink to="/Cart">
               <FaShoppingCart className="shopping-cart" />
               {cartBadge ? (
