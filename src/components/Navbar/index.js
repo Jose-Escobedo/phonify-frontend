@@ -17,7 +17,15 @@ import {
   NavBtnLinkClear,
 } from "./NavbarElements";
 const logo = require("../../images/logo.svg").default;
-const Navbar = ({ toggle, cartBadge, user, setUser, setIsAuthenticated }) => {
+const Navbar = ({
+  toggle,
+  cartBadge,
+  setCartItems,
+  cartPhones,
+  user,
+  setUser,
+  setIsAuthenticated,
+}) => {
   const logout = () => {
     fetch("http://localhost:3000/logout", {
       method: "DELETE",
@@ -26,6 +34,10 @@ const Navbar = ({ toggle, cartBadge, user, setUser, setIsAuthenticated }) => {
       setUser(null);
     });
   };
+
+  useEffect(() => {
+    setCartItems(cartPhones.length);
+  }, [cartPhones]);
 
   const [scrollNav, setScrollNav] = useState(false);
 

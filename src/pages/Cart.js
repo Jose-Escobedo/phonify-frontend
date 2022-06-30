@@ -17,7 +17,12 @@ import {
   ArrowRight,
 } from "../components/Cart/CartElements";
 
-const Cart = ({ handleQuantityAdd, handleQuantityReduce, cartPhones }) => {
+const Cart = ({
+  handleQuantityAdd,
+  handleQuantityReduce,
+  cartPhones,
+  cartItems,
+}) => {
   const logo = require("../images/logo.svg").default;
 
   const [hover, setHover] = useState(false);

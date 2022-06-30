@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-const Checkout = ({ addNewFormData, cartPhones }) => {
+const Checkout = ({
+  addNewFormData,
+  cartPhones,
+  setCartPhones,
+  cartItems,
+  setCartItems,
+}) => {
   const logo = require("../images/logo.svg").default;
 
   const itemsPrice = cartPhones.reduce(
@@ -12,6 +19,8 @@ const Checkout = ({ addNewFormData, cartPhones }) => {
   const taxPrice = itemsPrice * 0.095;
   const shippingPrice = itemsPrice > 1200 ? 0 : 25;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
+
+  const [navigateToggle, setNavigateToggle] = useState(false);
 
   const blankForm = {
     name: "",
@@ -66,89 +75,103 @@ const Checkout = ({ addNewFormData, cartPhones }) => {
     console.log(newFormData);
   }
 
-  //   function handleTotalChange(e) {
-  //     setFormData({
-  //       ...newFormData,
-  //       total: e.target.value,
-  //     });
-  //     console.log(newFormData);
-  //   }
-
   const handleForm = (e) => {
     e.preventDefault();
     addNewFormData(newFormData);
     setFormData(blankForm);
+    setCartPhones([]);
+    setNavigateToggle(!navigateToggle);
   };
+
+  useEffect(() => {
+    fetch("http://localhost:3000/Cart", {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then(setCartPhones);
+  }, [cartPhones.length]);
 
   return (
     <>
-      <CheckoutContainer>
-        <CheckoutNav to="/">
-          <CheckoutLogo src={logo} />
-        </CheckoutNav>
-        <CheckoutMain>
-          <CheckoutMainH1>Checkout</CheckoutMainH1>
-          <CheckoutForm onSubmit={handleForm}>
-            <input
-              type="text"
-              id="name"
-              placeholder="NAME"
-              name="name"
-              value={newFormData.name}
-              onChange={handleNameChange}
-              required
-            />
-            <input
-              type="email"
-              id="email"
-              placeholder="EMAIL"
-              name="email"
-              value={newFormData.email}
-              onChange={handleEmailChange}
-              required
-            />
-            <input
-              type="text"
-              id="address"
-              placeholder="ADDRESS"
-              name="address"
-              value={newFormData.address}
-              onChange={handleAddressChange}
-              required
-            />
-            <PayMethod>
-              <label htmlFor="pay_method">PAY METHOD:</label>
-              <select
-                id="pay_method"
-                name="pay_method"
-                value={newFormData.pay_method}
-                onChange={handlePayChange}
-                required
-              >
-                <option defaultValue disabled value="">
-                  {" "}
-                  -- select an option --{" "}
-                </option>
-                <option value="paypal">PAYPAL</option>
-                <option value="stripe">STRIPE</option>
-                <option value="visa">VISA</option>
-                <option value="mastercard">MASTERCARD</option>
-              </select>
-            </PayMethod>
+      {navigateToggle ? (
+        <Navigate to="/" />
+      ) : (
+        <CheckoutContainer>
+          <CheckoutNav to="/">
+            <CheckoutLogo src={logo} />
+          </CheckoutNav>
 
-            <textarea
-              rows="6"
-              placeholder="DELIVERY INSTRUCTIONS"
-              name="delivery_instructions"
-              value={newFormData.delivery_instructions}
-              onChange={handleDevliveryInstructionsChange}
-            ></textarea>
-            <CheckoutButton id="submit" type="submit" value="SEND">
-              Submit Order
-            </CheckoutButton>
-          </CheckoutForm>
-        </CheckoutMain>
-      </CheckoutContainer>
+          {cartItems === 0 || cartItems === null ? (
+            <CheckoutMain>
+              <CheckoutH1>Cart Is Empty</CheckoutH1>
+            </CheckoutMain>
+          ) : (
+            <CheckoutMain>
+              <CheckoutMainH1>Checkout</CheckoutMainH1>
+              <CheckoutForm onSubmit={handleForm}>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="NAME"
+                  name="name"
+                  value={newFormData.name}
+                  onChange={handleNameChange}
+                  required
+                />
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="EMAIL"
+                  name="email"
+                  value={newFormData.email}
+                  onChange={handleEmailChange}
+                  required
+                />
+                <input
+                  type="text"
+                  id="address"
+                  placeholder="ADDRESS"
+                  name="address"
+                  value={newFormData.address}
+                  onChange={handleAddressChange}
+                  required
+                />
+                <PayMethod>
+                  <label htmlFor="pay_method">PAY METHOD:</label>
+                  <select
+                    id="pay_method"
+                    name="pay_method"
+                    value={newFormData.pay_method}
+                    onChange={handlePayChange}
+                    required
+                  >
+                    <option defaultValue disabled value="">
+                      {" "}
+                      -- select an option --{" "}
+                    </option>
+                    <option value="paypal">PAYPAL</option>
+                    <option value="stripe">STRIPE</option>
+                    <option value="visa">VISA</option>
+                    <option value="mastercard">MASTERCARD</option>
+                  </select>
+                </PayMethod>
+
+                <textarea
+                  rows="6"
+                  placeholder="DELIVERY INSTRUCTIONS"
+                  name="delivery_instructions"
+                  value={newFormData.delivery_instructions}
+                  onChange={handleDevliveryInstructionsChange}
+                ></textarea>
+                <CheckoutButton id="submit" type="submit" value="SEND">
+                  Submit Order
+                </CheckoutButton>
+              </CheckoutForm>
+            </CheckoutMain>
+          )}
+        </CheckoutContainer>
+      )}
     </>
   );
 };
@@ -159,6 +182,17 @@ const CheckoutContainer = styled.section`
   align-items: center;
   min-height: 100vh;
   z-index: -99;
+`;
+
+const CheckoutH1 = styled.h1`
+  font-size: 2.5rem;
+  color: white;
+  margin: 64px 10px;
+  font-family: "Montserrat", sans-serif;
+
+  @media screen and (max-width: 650px) {
+    font-size: 2rem;
+  }
 `;
 
 const CheckoutNav = styled(LinkR)`

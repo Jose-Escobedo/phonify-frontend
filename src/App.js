@@ -13,7 +13,8 @@ function App({}) {
   const [phones, setPhones] = useState([]);
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-  const [cartPhones, setCartPhones] = useState(["1", "2"]);
+  const [cartPhones, setCartPhones] = useState([]);
+  const [cartItems, setCartItems] = useState(null);
 
   console.log(cartPhones);
 
@@ -109,7 +110,7 @@ function App({}) {
       body: JSON.stringify(e),
     })
       .then((res) => res.json())
-      .then(console.log("success"));
+      .then(setCartPhones);
     // setCart([...Cart, e])
   };
 
@@ -120,15 +121,15 @@ function App({}) {
     })
       .then((res) => res.json())
       .then(setCartPhones);
+  }, [cartPhones.length]);
 
-    // fetch("http://localhost:3000/authorized_user").then((res) => {
-    //   if (res.ok) {
-    //     res.json().then((user) => {
-    //       setIsAuthenticated(true);
-    //       setUser(user);
-    //     });
-    //   }
-    // });
+  useEffect(() => {
+    fetch("http://localhost:3000/Cart", {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then(setCartPhones);
 
     fetch("http://localhost:3000/phones")
       .then((res) => res.json())
@@ -148,10 +149,8 @@ function App({}) {
               isOpen={isOpen}
               handleQuantityAdd={handleQuantityAdd}
               cartPhones={cartPhones}
-              // setUser={setUser}
-              // setIsAuthenticated={setIsAuthenticated}
-              // user={user}
-              cartBadge={cartPhones.length}
+              cartBadge={cartItems}
+              setCartItems={setCartItems}
             />
           }
         />
@@ -186,6 +185,7 @@ function App({}) {
               handleQuantityReduce={handleQuantityReduce}
               cartPhones={cartPhones}
               setCartPhones={setCartPhones}
+              cartItems={cartItems}
             />
           }
         />
@@ -193,7 +193,13 @@ function App({}) {
           exact
           path="/checkout"
           element={
-            <Checkout addNewFormData={addNewFormData} cartPhones={cartPhones} />
+            <Checkout
+              addNewFormData={addNewFormData}
+              cartPhones={cartPhones}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+              setCartPhones={setCartPhones}
+            />
           }
         />
       </Routes>
