@@ -77,7 +77,10 @@ const Footer = () => {
               {`Phonify © ${new Date().getFullYear()} All rights reserved.`}
             </WebsiteRights>
             <SocialIcons>
-              <SocialIconLink href="/" target="_blank" aria-label="Github">
+              <SocialIconLink
+                href="https://github.com/Jose-Escobedo"
+                aria-label="Github"
+              >
                 <FaGithub />
               </SocialIconLink>
               <SocialIconLink href="/" target="_blank" aria-label="Instagram">
@@ -86,10 +89,16 @@ const Footer = () => {
               <SocialIconLink href="/" target="_blank" aria-label="Twitter">
                 <FaTwitter />
               </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Linkedin">
+              <SocialIconLink
+                href="https://www.linkedin.com/in/jose-escobedo-89b943232/"
+                aria-label="Linkedin"
+              >
                 <FaLinkedin />
               </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Medium">
+              <SocialIconLink
+                href="https://medium.com/@escobedo.jose"
+                aria-label="Medium"
+              >
                 <FaMedium />
               </SocialIconLink>
             </SocialIcons>
