@@ -34,37 +34,37 @@ const Footer = () => {
           <FooterLinksWrapper>
             <FooterLinkItem>
               <FooterLinkTitle>About Us</FooterLinkTitle>
-              <FooterLink to="/Login">How it works</FooterLink>
-              <FooterLink to="/Login">Testimonials</FooterLink>
-              <FooterLink to="/Login">Phone Reviews</FooterLink>
-              <FooterLink to="/Login">Phone Repairs</FooterLink>
-              <FooterLink to="/Login">Gallery</FooterLink>
+              <FooterLink to="/">How it works</FooterLink>
+              <FooterLink to="/">Testimonials</FooterLink>
+              <FooterLink to="/">Phone Reviews</FooterLink>
+              <FooterLink to="/">Phone Repairs</FooterLink>
+              <FooterLink to="/">Gallery</FooterLink>
             </FooterLinkItem>
             <FooterLinkItem>
               <FooterLinkTitle>Contact Us</FooterLinkTitle>
-              <FooterLink to="/Login">How it works</FooterLink>
-              <FooterLink to="/Login">Testimonials</FooterLink>
-              <FooterLink to="/Login">Phone Reviews</FooterLink>
-              <FooterLink to="/Login">Phone Repairs</FooterLink>
-              <FooterLink to="/Login">Gallery</FooterLink>
+              <FooterLink to="/">How it works</FooterLink>
+              <FooterLink to="/">Testimonials</FooterLink>
+              <FooterLink to="/">Phone Reviews</FooterLink>
+              <FooterLink to="/">Phone Repairs</FooterLink>
+              <FooterLink to="/">Gallery</FooterLink>
             </FooterLinkItem>
           </FooterLinksWrapper>
           <FooterLinksWrapper>
             <FooterLinkItem>
               <FooterLinkTitle>Members</FooterLinkTitle>
-              <FooterLink to="/Login">How it works</FooterLink>
-              <FooterLink to="/Login">Testimonials</FooterLink>
-              <FooterLink to="/Login">Phone Reviews</FooterLink>
-              <FooterLink to="/Login">Phone Repairs</FooterLink>
-              <FooterLink to="/Login">Gallery</FooterLink>
+              <FooterLink to="/">How it works</FooterLink>
+              <FooterLink to="/">Testimonials</FooterLink>
+              <FooterLink to="/">Phone Reviews</FooterLink>
+              <FooterLink to="/">Phone Repairs</FooterLink>
+              <FooterLink to="/">Gallery</FooterLink>
             </FooterLinkItem>
             <FooterLinkItem>
               <FooterLinkTitle>Our Team</FooterLinkTitle>
-              <FooterLink to="/Login">How it works</FooterLink>
-              <FooterLink to="/Login">Testimonials</FooterLink>
-              <FooterLink to="/Login">Phone Reviews</FooterLink>
-              <FooterLink to="/Login">Phone Repairs</FooterLink>
-              <FooterLink to="/Login">Gallery</FooterLink>
+              <FooterLink to="/">How it works</FooterLink>
+              <FooterLink to="/">Testimonials</FooterLink>
+              <FooterLink to="/">Phone Reviews</FooterLink>
+              <FooterLink to="/">Phone Repairs</FooterLink>
+              <FooterLink to="/">Gallery</FooterLink>
             </FooterLinkItem>
           </FooterLinksWrapper>
         </FooterLinksContainer>

@@ -214,6 +214,10 @@ const CheckoutForm = styled.form`
   width: 40%;
   margin-top: 2em;
 
+  @media screen and (max-width: 750px) {
+    width: 60%;
+  }
+
   input {
     width: 100%;
     background-color: transparent;
@@ -221,6 +225,9 @@ const CheckoutForm = styled.form`
     border: 1px solid white;
     padding: 0.5em 0.5em;
     font-size: 1rem;
+    @media screen and (max-width: 545px) {
+      font-size: 0.8rem;
+    }
   }
   label {
     background-color: transparent;
@@ -228,6 +235,12 @@ const CheckoutForm = styled.form`
     border: 1px solid white;
     padding: 0.5em 0.5em;
     font-size: 1rem;
+    @media screen and (max-width: 750px) {
+      max-width: 50%;
+    }
+    @media screen and (max-width: 545px) {
+      font-size: 0.8rem;
+    }
   }
 
   select {
@@ -235,6 +248,15 @@ const CheckoutForm = styled.form`
     border-left: none;
     background-color: transparent;
     color: grey;
+    @media screen and (max-width: 750px) {
+      max-width: 50%;
+    }
+    @media screen and (max-width: 545px) {
+      font-size: 0.8rem;
+    }
+    @media screen and (max-width: 525px) {
+      font-size: 0.6rem;
+    }
   }
 
   option {
@@ -253,6 +275,9 @@ const CheckoutForm = styled.form`
     padding: 0.5em 0.5em;
     margin-bottom: 2em;
     font-size: 1rem;
+    @media screen and (max-width: 545px) {
+      font-size: 0.8rem;
+    }
   }
 `;
 
@@ -276,6 +301,11 @@ const CheckoutButton = styled.button`
     transition: all 0.2s ease-in-out;
     background: white;
     color: black;
+  }
+
+  @media screen and (max-width: 750px) {
+    font-size: 0.8rem;
+    padding: 0.8em 1.8em;
   }
 `;
 export default Checkout;
