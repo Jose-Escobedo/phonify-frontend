@@ -39,14 +39,14 @@ const Cart = ({
   const shippingPrice = itemsPrice > 1200 ? 0 : 25;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
 
-  useEffect(() => {
-    fetch("https://phonify-app.herokuapp.com/Cart", {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then(setCartPhones);
-  }, [cartPhones.length]);
+  // useEffect(() => {
+  //   fetch("https://phonify-app.herokuapp.com/Cart", {
+  //     method: "GET",
+  //     credentials: "include",
+  //   })
+  //     .then((res) => res.json())
+  //     .then(setCartPhones);
+  // }, [cartPhones.length]);
 
   return (
     <>
