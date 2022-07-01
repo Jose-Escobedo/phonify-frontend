@@ -22,7 +22,6 @@ const Cart = ({
   handleQuantityReduce,
   cartPhones,
   cartItems,
-  setCartPhones,
 }) => {
   const logo = require("../images/logo.svg").default;
 
@@ -39,6 +38,7 @@ const Cart = ({
   const taxPrice = itemsPrice * 0.095;
   const shippingPrice = itemsPrice > 1200 ? 0 : 25;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
+
   useEffect(() => {
     fetch("https://phonify-app.herokuapp.com/Cart", {
       method: "GET",
@@ -46,7 +46,7 @@ const Cart = ({
     })
       .then((res) => res.json())
       .then(setCartPhones);
-  }, []);
+  }, [cartPhones.length]);
 
   return (
     <>
