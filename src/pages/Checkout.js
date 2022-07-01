@@ -96,7 +96,7 @@ const Checkout = ({ addNewFormData, cartPhones, setCartPhones, cartItems }) => {
             <CheckoutLogo src={logo} />
           </CheckoutNav>
 
-          {cartItems === 0 || cartItems === null ? (
+          {cartPhones.length === 0 || cartPhones.length === null ? (
             <CheckoutMain>
               <CheckoutH1>Cart Is Empty</CheckoutH1>
             </CheckoutMain>
