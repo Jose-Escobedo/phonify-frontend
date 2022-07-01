@@ -78,7 +78,7 @@ const Checkout = ({ addNewFormData, cartPhones, setCartPhones, cartItems }) => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/Cart", {
+    fetch("https://phonify-app.herokuapp.com/Cart", {
       method: "GET",
       credentials: "include",
     })

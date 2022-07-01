@@ -271,13 +271,27 @@ export const ArrowRight = styled(MdKeyboardArrowRight)`
 export const CartSummaryColumn1 = styled.div`
   font-size: 1.5rem;
   border-bottom: 1px solid #00ffff;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.3rem;
+  }
   @media screen and (max-width: 480px) {
     font-size: 1.2rem;
+  }
+
+  @media screen and (max-width: 440px) {
+    font-size: 0.9rem;
   }
 `;
 export const CartSummaryColumn2 = styled.div`
   font-size: 1.5rem;
+  @media screen and (max-width: 768px) {
+    font-size: 1.3rem;
+  }
   @media screen and (max-width: 480px) {
     font-size: 1.2rem;
+  }
+  @media screen and (max-width: 440px) {
+    font-size: 0.9rem;
   }
 `;

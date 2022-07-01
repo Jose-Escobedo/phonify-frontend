@@ -26,7 +26,7 @@ function App({}) {
     const cartPhonesExist = cartPhones.find((item) => item.id === phone.id);
 
     if (cartPhonesExist) {
-      fetch(`http://localhost:3000/cart_items/add`, {
+      fetch(`https://phonify-app.herokuapp.com/cart_items/add`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -49,7 +49,7 @@ function App({}) {
           )
         );
     } else {
-      fetch(`http://localhost:3000/cart_items`, {
+      fetch(`https://phonify-app.herokuapp.com/cart_items`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -66,7 +66,7 @@ function App({}) {
   function handleQuantityReduce(phone) {
     const exist = cartPhones.find((item) => item.id === phone.id);
     if (exist.quantity === 1) {
-      fetch(`http://localhost:3000/cart_items/reduce`, {
+      fetch(`https://phonify-app.herokuapp.com/cart_items/reduce`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -78,7 +78,7 @@ function App({}) {
         .then((res) => res.json())
         .then(setCartPhones(cartPhones.filter((item) => item.id !== phone.id)));
     } else {
-      fetch(`http://localhost:3000/cart_items/reduce`, {
+      fetch(`https://phonify-app.herokuapp.com/cart_items/reduce`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -101,7 +101,7 @@ function App({}) {
   }
 
   const addNewFormData = (e) => {
-    fetch("http://localhost:3000/orders", {
+    fetch("https://phonify-app.herokuapp.com/orders", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -114,7 +114,7 @@ function App({}) {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/Cart", {
+    fetch("https://phonify-app.herokuapp.com/Cart", {
       method: "GET",
       credentials: "include",
     })
@@ -123,14 +123,14 @@ function App({}) {
   }, [cartPhones.length]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/Cart", {
+    fetch("https://phonify-app.herokuapp.com/Cart", {
       method: "GET",
       credentials: "include",
     })
       .then((res) => res.json())
       .then(setCartPhones);
 
-    fetch("http://localhost:3000/phones")
+    fetch("https://phonify-app.herokuapp.com/phones")
       .then((res) => res.json())
       .then(setPhones);
   }, []);
