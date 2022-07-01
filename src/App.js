@@ -148,7 +148,7 @@ function App({}) {
               isOpen={isOpen}
               handleQuantityAdd={handleQuantityAdd}
               cartPhones={cartPhones}
-              cartBadge={cartItems}
+              cartBadge={cartPhones.length}
               setCartItems={setCartItems}
             />
           }

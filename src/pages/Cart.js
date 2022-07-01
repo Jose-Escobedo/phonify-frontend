@@ -47,7 +47,7 @@ const Cart = ({
     })
       .then((res) => res.json())
       .then(setCartPhones);
-  }, [cartPhones.length]);
+  }, []);
 
   return (
     <>
