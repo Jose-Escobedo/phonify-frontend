@@ -22,6 +22,7 @@ const Cart = ({
   handleQuantityReduce,
   cartPhones,
   cartItems,
+  setCartPhones,
 }) => {
   const logo = require("../images/logo.svg").default;
 
