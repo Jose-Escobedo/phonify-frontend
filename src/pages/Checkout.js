@@ -77,14 +77,14 @@ const Checkout = ({ addNewFormData, cartPhones, setCartPhones, cartItems }) => {
     setNavigateToggle(!navigateToggle);
   };
 
-  useEffect(() => {
-    fetch("https://phonify-app.herokuapp.com/Cart", {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then(setCartPhones);
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://phonify-app.herokuapp.com/Cart", {
+  //     method: "GET",
+  //     credentials: "include",
+  //   })
+  //     .then((res) => res.json())
+  //     .then(setCartPhones);
+  // }, []);
 
   return (
     <>
