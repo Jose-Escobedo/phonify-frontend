@@ -47,9 +47,7 @@ const Cart = ({
         </NavLogo>
       </CartNav>
       <CartContainer id="phone-card">
-        <CartH1>
-          {cartPhones.length === 0 ? "Cart Is Empty" : "Your Cart Items"}
-        </CartH1>
+        <CartH1>{cartItems === 0 ? "Cart Is Empty" : "Your Cart Items"}</CartH1>
         <CartPhonesWrapper>
           {cartPhones.map((item, index) => {
             return (

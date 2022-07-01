@@ -14,7 +14,7 @@ function App({}) {
   const [phones, setPhones] = useState([]);
   const [user, setUser] = useState(null);
   const [cartPhones, setCartPhones] = useState([]);
-  const [cartItems, setCartItems] = useState(null);
+  const [cartItems, setCartItems] = useState(cartPhones.length);
 
   console.log(cartPhones);
 
@@ -129,6 +129,8 @@ function App({}) {
     })
       .then((res) => res.json())
       .then(setCartPhones);
+
+    setCartItems(cartPhones.length);
 
     fetch("https://phonify-app.herokuapp.com/phones")
       .then((res) => res.json())
