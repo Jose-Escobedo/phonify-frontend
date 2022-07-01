@@ -110,8 +110,17 @@ function App({}) {
       body: JSON.stringify(e),
     })
       .then((res) => res.json())
-      .then(setCartPhones);
+      .then(setCartPhones([]));
   };
+
+  // useEffect(() => {
+  //   fetch("https://phonify-app.herokuapp.com/Cart", {
+  //     method: "GET",
+  //     credentials: "include",
+  //   })
+  //     .then((res) => res.json())
+  //     .then(setCartPhones);
+  // }, [cartPhones.length]);
 
   useEffect(() => {
     fetch("https://phonify-app.herokuapp.com/Cart", {
@@ -120,15 +129,6 @@ function App({}) {
     })
       .then((res) => res.json())
       .then(setCartPhones);
-  }, [cartPhones.length]);
-
-  useEffect(() => {
-    // fetch("https://phonify-app.herokuapp.com/Cart", {
-    //   method: "GET",
-    //   credentials: "include",
-    // })
-    //   .then((res) => res.json())
-    //   .then(setCartPhones);
 
     fetch("https://phonify-app.herokuapp.com/phones")
       .then((res) => res.json())
