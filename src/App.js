@@ -133,7 +133,7 @@ function App({}) {
     fetch("https://phonify-app.herokuapp.com/phones")
       .then((res) => res.json())
       .then(setPhones);
-  }, []);
+  }, [cartPhones.length]);
 
   return (
     <>
