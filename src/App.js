@@ -125,12 +125,12 @@ function App({}) {
   }, [cartPhones]);
 
   useEffect(() => {
-    fetch("https://phonify-app.herokuapp.com/Cart", {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then(setCartPhones);
+    // fetch("https://phonify-app.herokuapp.com/Cart", {
+    //   method: "GET",
+    //   credentials: "include",
+    // })
+    //   .then((res) => res.json())
+    //   .then(setCartPhones);
 
     fetch("https://phonify-app.herokuapp.com/phones")
       .then((res) => res.json())
