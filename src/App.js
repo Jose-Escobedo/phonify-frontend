@@ -120,6 +120,8 @@ function App({}) {
     })
       .then((res) => res.json())
       .then(setCartPhones);
+
+    setCartItems(cartPhones.length);
   }, [cartPhones.length]);
 
   useEffect(() => {
@@ -129,8 +131,6 @@ function App({}) {
     })
       .then((res) => res.json())
       .then(setCartPhones);
-
-    setCartItems(cartPhones.length);
 
     fetch("https://phonify-app.herokuapp.com/phones")
       .then((res) => res.json())
