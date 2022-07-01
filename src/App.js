@@ -120,8 +120,6 @@ function App({}) {
     })
       .then((res) => res.json())
       .then(setCartPhones);
-
-    setCartItems(cartPhones.length);
   }, [cartPhones]);
 
   useEffect(() => {
