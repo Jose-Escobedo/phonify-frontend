@@ -122,7 +122,7 @@ function App({}) {
       .then(setCartPhones);
 
     setCartItems(cartPhones.length);
-  }, [cartPhones.length]);
+  }, [cartPhones]);
 
   useEffect(() => {
     fetch("https://phonify-app.herokuapp.com/Cart", {

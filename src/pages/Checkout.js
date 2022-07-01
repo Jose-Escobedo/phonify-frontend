@@ -84,7 +84,7 @@ const Checkout = ({ addNewFormData, cartPhones, setCartPhones, cartItems }) => {
     })
       .then((res) => res.json())
       .then(setCartPhones);
-  }, [cartPhones.length]);
+  }, [cartPhones]);
 
   return (
     <>
