@@ -120,7 +120,7 @@ function App({}) {
     })
       .then((res) => res.json())
       .then(setCartPhones);
-  }, [cartPhones]);
+  }, [cartPhones.length]);
 
   useEffect(() => {
     fetch("https://phonify-app.herokuapp.com/Cart", {
