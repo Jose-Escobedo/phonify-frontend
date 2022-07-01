@@ -15,10 +15,6 @@ import {
 } from "./NavbarElements";
 const logo = require("../../images/logo.svg").default;
 const Navbar = ({ toggle, cartBadge, setCartItems, cartPhones }) => {
-  useEffect(() => {
-    setCartItems(cartPhones.length);
-  }, [cartPhones]);
-
   const [scrollNav, setScrollNav] = useState(false);
 
   const changeNav = () => {
